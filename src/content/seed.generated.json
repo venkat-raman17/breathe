@@ -1,0 +1,235 @@
+{
+  "generatedBy": "scripts/build-content.ts",
+  "packCount": 1,
+  "counts": {
+    "traditions": 1,
+    "techniques": 1,
+    "sessionTemplates": 1,
+    "energyCenters": 1,
+    "mediaAssets": 1
+  },
+  "bundles": [
+    {
+      "pack": {
+        "slug": "core",
+        "kind": "core",
+        "traditionSlug": null,
+        "version": 1,
+        "sizeBytes": 0
+      },
+      "traditions": [
+        {
+          "slug": "yogic",
+          "displayNameKey": "tradition.yogic.name",
+          "family": "indic",
+          "cosmologySummaryKey": "tradition.yogic.cosmology",
+          "lineageNotesKey": "tradition.yogic.lineage",
+          "provenance": "classical",
+          "isModernSynthesis": false,
+          "requiresInitiationNote": false,
+          "isClosedPractice": false,
+          "beliefLabelKey": "tradition.yogic.beliefLabel",
+          "defaultThemeSlug": "yogic_tantric"
+        }
+      ],
+      "energyCenters": [
+        {
+          "slug": "manipura",
+          "traditionSlug": "yogic",
+          "displayNameKey": "center.manipura",
+          "ordinal": 3,
+          "bodyRegionCode": "navel",
+          "geometryMotif": "lotus",
+          "petalCount": 10,
+          "seedSyllableKey": "bija.ram",
+          "colorToken": "chakra.solar",
+          "colorProvenance": "modern_rainbow",
+          "elementKey": "element.fire",
+          "feltQualities": [
+            "warmth"
+          ],
+          "notesKey": "center.manipura.classicalNote"
+        }
+      ],
+      "energyChannels": [
+        {
+          "slug": "sushumna",
+          "traditionSlug": "yogic",
+          "displayNameKey": "channel.sushumna",
+          "role": "central",
+          "colorToken": "#C9A227",
+          "polarityKey": "polarity.axis"
+        }
+      ],
+      "bodyRegions": [
+        {
+          "code": "navel",
+          "displayNameKey": "region.navel",
+          "view": "both"
+        },
+        {
+          "code": "heart",
+          "displayNameKey": "region.heart",
+          "view": "both"
+        },
+        {
+          "code": "crown",
+          "displayNameKey": "region.crown",
+          "view": "both"
+        }
+      ],
+      "visualThemes": [
+        {
+          "slug": "yogic_tantric",
+          "traditionSlug": "yogic",
+          "paletteJson": {
+            "bg": "#0E0B16",
+            "accent": "#C9A227",
+            "axis": "#C9A227"
+          },
+          "motifSet": "lotus_yantra",
+          "shaderKey": "energy_rise",
+          "reduceMotionFallback": "crossfade"
+        }
+      ],
+      "feltSenseVocab": [
+        {
+          "code": "warmth",
+          "displayNameKey": "felt.warmth",
+          "valenceDefault": 1,
+          "colorTemp": "warm",
+          "bodyRegionAffinity": [
+            "navel",
+            "heart"
+          ]
+        },
+        {
+          "code": "expansion",
+          "displayNameKey": "felt.expansion",
+          "valenceDefault": 1,
+          "colorTemp": "neutral",
+          "bodyRegionAffinity": [
+            "heart",
+            "chest"
+          ]
+        }
+      ],
+      "techniques": [
+        {
+          "slug": "nadi_shodhana",
+          "canonicalNameKey": "tech.nadi_shodhana.name",
+          "aliases": [
+            "Anulom Vilom",
+            "Alternate-nostril breathing"
+          ],
+          "summaryKey": "tech.nadi_shodhana.summary",
+          "primaryTraditionSlug": "yogic",
+          "traditionSlugs": [
+            "yogic"
+          ],
+          "goals": [
+            {
+              "goalCode": "calm",
+              "strength": 1
+            },
+            {
+              "goalCode": "breath_mechanics",
+              "strength": 0.6
+            }
+          ],
+          "intensityClass": "gentle",
+          "requiresSafetyGate": false,
+          "feltExperienceKey": "tech.nadi_shodhana.felt",
+          "safetyNotesKey": "tech.nadi_shodhana.safety"
+        }
+      ],
+      "sessionTemplates": [
+        {
+          "slug": "nadi_shodhana_5min",
+          "techniqueSlug": "nadi_shodhana",
+          "durationSec": 300,
+          "difficulty": "gentle",
+          "posture": "seated",
+          "phases": [
+            {
+              "seq": 0,
+              "type": "inhale",
+              "seconds": 4,
+              "bodyRegionCode": "navel",
+              "breathRoute": "nasal"
+            },
+            {
+              "seq": 1,
+              "type": "exhale",
+              "seconds": 6,
+              "bodyRegionCode": "navel",
+              "breathRoute": "nasal"
+            }
+          ],
+          "defaultThemeSlug": "yogic_tantric",
+          "defaultEnergyScriptSlug": "prana_rise"
+        }
+      ],
+      "energyScripts": [
+        {
+          "slug": "prana_rise",
+          "traditionSlug": "yogic",
+          "summaryKey": "script.prana_rise.summary",
+          "events": [
+            {
+              "atPhaseSeq": 0,
+              "motion": "rise",
+              "fromRegion": "navel",
+              "toRegion": "crown",
+              "channelSlug": "sushumna",
+              "intensity": 0.6,
+              "colorToken": "energy.rise",
+              "labelKey": "energy.rise.label"
+            }
+          ]
+        }
+      ],
+      "contraindicationRules": [
+        {
+          "id": "retention_water",
+          "techniqueSlug": null,
+          "severity": "block",
+          "conditionCode": "in_or_near_water",
+          "messageKey": "safety.never_in_water"
+        }
+      ],
+      "mediaAssets": [
+        {
+          "id": "voice_intro_en",
+          "kind": "audio",
+          "locale": "en",
+          "uri": "asset://voice/intro_en.m4a",
+          "bundled": true,
+          "licence": "CC0-1.0",
+          "attribution": "Commissioned for Breathe",
+          "rightsClass": "cc0"
+        }
+      ],
+      "translations": [
+        {
+          "key": "tradition.yogic.name",
+          "locale": "en",
+          "value": "Yogic",
+          "rtl": false
+        },
+        {
+          "key": "center.manipura",
+          "locale": "en",
+          "value": "Maṇipūra",
+          "rtl": false
+        },
+        {
+          "key": "tech.nadi_shodhana.name",
+          "locale": "en",
+          "value": "Nāḍī Shodhana",
+          "rtl": false
+        }
+      ]
+    }
+  ]
+}
