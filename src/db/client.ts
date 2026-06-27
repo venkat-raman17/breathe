@@ -34,8 +34,11 @@ async function runMigrations(db: SQLite.SQLiteDatabase): Promise<void> {
   for (const migration of MIGRATIONS) {
     if (migration.version <= current) continue;
     await db.withTransactionAsync(async () => {
-      for (const statement of migration.statements) {
+      for (const statement of migration.statements ?? []) {
         await db.execAsync(statement);
+      }
+      if (migration.run) {
+        await migration.run(db);
       }
     });
     // PRAGMA user_version cannot be parameterized; version is an integer from our own code.

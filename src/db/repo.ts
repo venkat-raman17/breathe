@@ -352,6 +352,44 @@ export async function getSessionTemplateForTechnique(
   return row ? mapTemplate(row) : null;
 }
 
+export interface EnergyEventInfo {
+  atPhaseSeq: number;
+  atPhaseFraction?: number;
+  motion: string;
+  fromRegion?: string;
+  toRegion?: string;
+  centerSlug?: string;
+  channelSlug?: string;
+  intensity: number;
+  colorToken: string;
+  labelKey: string;
+}
+
+export interface EnergyScriptInfo {
+  slug: string;
+  traditionSlug: string;
+  summaryKey: string;
+  events: EnergyEventInfo[];
+}
+
+export async function getEnergyScript(slug: string): Promise<EnergyScriptInfo | null> {
+  const db = await openDb();
+  const row = await db.getFirstAsync<Row>('SELECT * FROM energy_script WHERE slug = ?', slug);
+  if (!row) return null;
+  let events: EnergyEventInfo[] = [];
+  try {
+    events = JSON.parse(row.events_json ?? '[]');
+  } catch {
+    events = [];
+  }
+  return {
+    slug: row.slug,
+    traditionSlug: row.tradition_slug,
+    summaryKey: row.summary_key,
+    events,
+  };
+}
+
 export async function createSession(args: {
   templateSlug: string | null;
   localeUsed: string;

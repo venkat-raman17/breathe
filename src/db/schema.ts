@@ -7,9 +7,13 @@
  * session_template — enforced at content-build time (scripts/build-content.ts).
  */
 
+import type { SQLiteDatabase } from 'expo-sqlite';
+
 export interface Migration {
   version: number;
-  statements: string[];
+  statements?: string[];
+  /** Imperative step (e.g. a conditional ALTER) run after `statements`, in the same transaction. */
+  run?: (db: SQLiteDatabase) => Promise<void>;
 }
 
 const v1: string[] = [
@@ -262,9 +266,20 @@ const v2: string[] = [
   );`,
 ];
 
+// v3 — reconcile user tables for DBs created before practice_session.mode_used was renamed to
+// tradition_used. Editing v1 in place never re-runs for DBs that already passed v1, so add the
+// column here (idempotently) for those installs; fresh DBs already have it, so this is a no-op.
+const v3 = async (db: SQLiteDatabase): Promise<void> => {
+  const cols = await db.getAllAsync<{ name: string }>('PRAGMA table_info(practice_session);');
+  if (!cols.some((c) => c.name === 'tradition_used')) {
+    await db.execAsync('ALTER TABLE practice_session ADD COLUMN tradition_used TEXT;');
+  }
+};
+
 export const MIGRATIONS: Migration[] = [
   { version: 1, statements: v1 },
   { version: 2, statements: v2 },
+  { version: 3, run: v3 },
 ];
 
 /** Highest migration version this build knows about. */

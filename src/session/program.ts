@@ -18,6 +18,7 @@ export interface SessionProgram {
   techniqueSlug: string | null;
   durationSec: number;
   phases: ProgramPhase[];
+  energyScriptSlug: string | null;
 }
 
 /** Gentle ~6 bpm fallback (4s in / 6s out) when a technique has no authored template. */
@@ -39,7 +40,14 @@ export async function resolveProgram(slug: string): Promise<SessionProgram> {
         seconds: p.seconds,
         bodyRegionCode: p.bodyRegionCode,
       })),
+      energyScriptSlug: tpl.defaultEnergyScriptSlug,
     };
   }
-  return { templateSlug: null, techniqueSlug: slug, durationSec: 180, phases: DEFAULT_PHASES };
+  return {
+    templateSlug: null,
+    techniqueSlug: slug,
+    durationSec: 180,
+    phases: DEFAULT_PHASES,
+    energyScriptSlug: null,
+  };
 }

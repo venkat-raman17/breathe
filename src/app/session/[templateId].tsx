@@ -7,8 +7,9 @@ import { useTranslation } from 'react-i18next';
 import { AccessibilityInfo, ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
 
 import { BreathOrb } from '@/components/breath-orb';
+import { EnergyOverlay } from '@/components/energy-overlay';
 import { AppText } from '@/components/ui/text';
-import { createSession, endSession, logSessionEvent } from '@/db/repo';
+import { createSession, endSession, getEnergyScript, logSessionEvent, type EnergyEventInfo } from '@/db/repo';
 import { useSettings } from '@/providers/SettingsProvider';
 import { useBreathEngine } from '@/session/engine';
 import { resolveProgram, type ProgramPhase, type SessionProgram } from '@/session/program';
@@ -67,8 +68,22 @@ function ActiveSession({ program }: { program: SessionProgram }) {
   useKeepAwake();
   const { colors, spacing } = useAppTheme();
   const { t } = useTranslation('chrome');
+  const { t: tc } = useTranslation('content');
   const { activeLocale, activeTradition } = useSettings();
   const sessionId = useRef<string | null>(null);
+  const [energyEvent, setEnergyEvent] = useState<EnergyEventInfo | null>(null);
+
+  useEffect(() => {
+    if (!program.energyScriptSlug) return;
+    let active = true;
+    getEnergyScript(program.energyScriptSlug).then((s) => {
+      if (active) setEnergyEvent(s?.events?.[0] ?? null);
+    });
+    return () => {
+      active = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     let active = true;
@@ -151,7 +166,11 @@ function ActiveSession({ program }: { program: SessionProgram }) {
       </Pressable>
 
       <View style={styles.center}>
-        <BreathOrb engine={engine} />
+        {energyEvent ? (
+          <EnergyOverlay engine={engine} event={energyEvent} />
+        ) : (
+          <BreathOrb engine={engine} />
+        )}
         <AppText
           variant="display"
           lang={activeLocale}
@@ -159,6 +178,16 @@ function ActiveSession({ program }: { program: SessionProgram }) {
           style={{ marginTop: spacing.lg, textAlign: 'center' }}>
           {caption}
         </AppText>
+        {energyEvent && engine.phase.seq === energyEvent.atPhaseSeq ? (
+          <AppText
+            variant="caption"
+            color="accent"
+            lang={activeLocale}
+            accessibilityLiveRegion="polite"
+            style={{ marginTop: spacing.xs, textAlign: 'center' }}>
+            {tc(energyEvent.labelKey)}
+          </AppText>
+        ) : null}
         <AppText variant="caption" color="lo" style={{ marginTop: spacing.sm }}>
           {fmt(engine.remainingSec)}
         </AppText>
