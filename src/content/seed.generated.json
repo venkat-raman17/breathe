@@ -1,11 +1,11 @@
 {
   "generatedBy": "scripts/build-content.ts",
-  "packCount": 1,
+  "packCount": 2,
   "counts": {
     "traditions": 1,
-    "techniques": 1,
-    "sessionTemplates": 1,
-    "energyCenters": 1,
+    "techniques": 9,
+    "sessionTemplates": 9,
+    "energyCenters": 7,
     "mediaAssets": 1
   },
   "bundles": [
@@ -15,53 +15,25 @@
         "kind": "core",
         "traditionSlug": null,
         "version": 1,
-        "sizeBytes": 0
+        "sizeBytes": 0,
+        "availableLocales": [
+          "en"
+        ]
       },
-      "traditions": [
-        {
-          "slug": "yogic",
-          "displayNameKey": "tradition.yogic.name",
-          "family": "indic",
-          "cosmologySummaryKey": "tradition.yogic.cosmology",
-          "lineageNotesKey": "tradition.yogic.lineage",
-          "provenance": "classical",
-          "isModernSynthesis": false,
-          "requiresInitiationNote": false,
-          "isClosedPractice": false,
-          "beliefLabelKey": "tradition.yogic.beliefLabel",
-          "defaultThemeSlug": "yogic_tantric"
-        }
-      ],
-      "energyCenters": [
-        {
-          "slug": "manipura",
-          "traditionSlug": "yogic",
-          "displayNameKey": "center.manipura",
-          "ordinal": 3,
-          "bodyRegionCode": "navel",
-          "geometryMotif": "lotus",
-          "petalCount": 10,
-          "seedSyllableKey": "bija.ram",
-          "colorToken": "chakra.solar",
-          "colorProvenance": "modern_rainbow",
-          "elementKey": "element.fire",
-          "feltQualities": [
-            "warmth"
-          ],
-          "notesKey": "center.manipura.classicalNote"
-        }
-      ],
-      "energyChannels": [
-        {
-          "slug": "sushumna",
-          "traditionSlug": "yogic",
-          "displayNameKey": "channel.sushumna",
-          "role": "central",
-          "colorToken": "#C9A227",
-          "polarityKey": "polarity.axis"
-        }
-      ],
+      "traditions": [],
+      "energyCenters": [],
+      "energyChannels": [],
       "bodyRegions": [
+        {
+          "code": "perineum",
+          "displayNameKey": "region.perineum",
+          "view": "both"
+        },
+        {
+          "code": "lower_belly",
+          "displayNameKey": "region.lower_belly",
+          "view": "both"
+        },
         {
           "code": "navel",
           "displayNameKey": "region.navel",
@@ -73,25 +45,22 @@
           "view": "both"
         },
         {
+          "code": "throat",
+          "displayNameKey": "region.throat",
+          "view": "both"
+        },
+        {
+          "code": "brow",
+          "displayNameKey": "region.brow",
+          "view": "both"
+        },
+        {
           "code": "crown",
           "displayNameKey": "region.crown",
           "view": "both"
         }
       ],
-      "visualThemes": [
-        {
-          "slug": "yogic_tantric",
-          "traditionSlug": "yogic",
-          "paletteJson": {
-            "bg": "#0E0B16",
-            "accent": "#C9A227",
-            "axis": "#C9A227"
-          },
-          "motifSet": "lotus_yantra",
-          "shaderKey": "energy_rise",
-          "reduceMotionFallback": "crossfade"
-        }
-      ],
+      "visualThemes": [],
       "feltSenseVocab": [
         {
           "code": "warmth",
@@ -112,8 +81,672 @@
             "heart",
             "chest"
           ]
+        },
+        {
+          "code": "tingling",
+          "displayNameKey": "felt.tingling",
+          "valenceDefault": 0,
+          "colorTemp": "cool",
+          "bodyRegionAffinity": [
+            "crown",
+            "brow"
+          ]
+        },
+        {
+          "code": "settling",
+          "displayNameKey": "felt.settling",
+          "valenceDefault": 1,
+          "colorTemp": "cool",
+          "bodyRegionAffinity": [
+            "lower_belly",
+            "perineum"
+          ]
         }
       ],
+      "techniques": [
+        {
+          "slug": "slow_breathing",
+          "canonicalNameKey": "tech.slow_breathing.name",
+          "aliases": [
+            "Resonance breathing",
+            "Coherent breathing"
+          ],
+          "summaryKey": "tech.slow_breathing.summary",
+          "primaryTraditionSlug": null,
+          "traditionSlugs": [],
+          "goals": [
+            {
+              "goalCode": "calm",
+              "strength": 1
+            },
+            {
+              "goalCode": "breath_mechanics",
+              "strength": 0.8
+            },
+            {
+              "goalCode": "focus",
+              "strength": 0.5
+            }
+          ],
+          "intensityClass": "gentle",
+          "requiresSafetyGate": false,
+          "feltExperienceKey": "tech.slow_breathing.felt"
+        },
+        {
+          "slug": "breath_awareness",
+          "canonicalNameKey": "tech.breath_awareness.name",
+          "aliases": [
+            "Mindful breathing"
+          ],
+          "summaryKey": "tech.breath_awareness.summary",
+          "primaryTraditionSlug": null,
+          "traditionSlugs": [],
+          "goals": [
+            {
+              "goalCode": "meditative_awareness",
+              "strength": 1
+            },
+            {
+              "goalCode": "calm",
+              "strength": 0.7
+            },
+            {
+              "goalCode": "recovery",
+              "strength": 0.6
+            }
+          ],
+          "intensityClass": "gentle",
+          "requiresSafetyGate": false,
+          "feltExperienceKey": "tech.breath_awareness.felt"
+        },
+        {
+          "slug": "box_breathing",
+          "canonicalNameKey": "tech.box_breathing.name",
+          "aliases": [
+            "Square breathing",
+            "Tactical breathing"
+          ],
+          "summaryKey": "tech.box_breathing.summary",
+          "primaryTraditionSlug": null,
+          "traditionSlugs": [],
+          "goals": [
+            {
+              "goalCode": "focus",
+              "strength": 1
+            },
+            {
+              "goalCode": "calm",
+              "strength": 0.7
+            }
+          ],
+          "intensityClass": "gentle",
+          "requiresSafetyGate": false,
+          "feltExperienceKey": "tech.box_breathing.felt"
+        },
+        {
+          "slug": "four_seven_eight",
+          "canonicalNameKey": "tech.four_seven_eight.name",
+          "aliases": [
+            "4-7-8 breathing",
+            "Relaxing breath"
+          ],
+          "summaryKey": "tech.four_seven_eight.summary",
+          "primaryTraditionSlug": null,
+          "traditionSlugs": [],
+          "goals": [
+            {
+              "goalCode": "sleep",
+              "strength": 1
+            },
+            {
+              "goalCode": "calm",
+              "strength": 0.8
+            }
+          ],
+          "intensityClass": "gentle",
+          "requiresSafetyGate": false,
+          "feltExperienceKey": "tech.four_seven_eight.felt",
+          "safetyNotesKey": "tech.four_seven_eight.safety"
+        },
+        {
+          "slug": "humming_breath",
+          "canonicalNameKey": "tech.humming_breath.name",
+          "aliases": [
+            "Humming exhale"
+          ],
+          "summaryKey": "tech.humming_breath.summary",
+          "primaryTraditionSlug": null,
+          "traditionSlugs": [],
+          "goals": [
+            {
+              "goalCode": "calm",
+              "strength": 1
+            },
+            {
+              "goalCode": "sleep",
+              "strength": 0.6
+            }
+          ],
+          "intensityClass": "gentle",
+          "requiresSafetyGate": false,
+          "feltExperienceKey": "tech.humming_breath.felt"
+        }
+      ],
+      "sessionTemplates": [
+        {
+          "slug": "slow_breathing_6min",
+          "techniqueSlug": "slow_breathing",
+          "durationSec": 330,
+          "difficulty": "gentle",
+          "posture": "seated",
+          "phases": [
+            {
+              "seq": 0,
+              "type": "inhale",
+              "seconds": 5.5,
+              "bodyRegionCode": "lower_belly",
+              "breathRoute": "nasal"
+            },
+            {
+              "seq": 1,
+              "type": "exhale",
+              "seconds": 5.5,
+              "bodyRegionCode": "lower_belly",
+              "breathRoute": "nasal"
+            }
+          ]
+        },
+        {
+          "slug": "breath_awareness_5min",
+          "techniqueSlug": "breath_awareness",
+          "durationSec": 300,
+          "difficulty": "gentle",
+          "posture": "seated",
+          "phases": [
+            {
+              "seq": 0,
+              "type": "free",
+              "seconds": 300,
+              "bodyRegionCode": "chest",
+              "breathRoute": "nasal"
+            }
+          ]
+        },
+        {
+          "slug": "box_4444",
+          "techniqueSlug": "box_breathing",
+          "durationSec": 240,
+          "difficulty": "gentle",
+          "posture": "seated",
+          "phases": [
+            {
+              "seq": 0,
+              "type": "inhale",
+              "seconds": 4,
+              "bodyRegionCode": "chest",
+              "breathRoute": "nasal"
+            },
+            {
+              "seq": 1,
+              "type": "hold_in",
+              "seconds": 4,
+              "breathRoute": "nasal"
+            },
+            {
+              "seq": 2,
+              "type": "exhale",
+              "seconds": 4,
+              "bodyRegionCode": "chest",
+              "breathRoute": "nasal"
+            },
+            {
+              "seq": 3,
+              "type": "hold_out",
+              "seconds": 4,
+              "breathRoute": "nasal"
+            }
+          ]
+        },
+        {
+          "slug": "four_seven_eight_cycle",
+          "techniqueSlug": "four_seven_eight",
+          "durationSec": 190,
+          "difficulty": "gentle",
+          "posture": "seated",
+          "phases": [
+            {
+              "seq": 0,
+              "type": "inhale",
+              "seconds": 4,
+              "bodyRegionCode": "lower_belly",
+              "breathRoute": "nasal"
+            },
+            {
+              "seq": 1,
+              "type": "hold_in",
+              "seconds": 7,
+              "breathRoute": "nasal"
+            },
+            {
+              "seq": 2,
+              "type": "exhale",
+              "seconds": 8,
+              "bodyRegionCode": "lower_belly",
+              "breathRoute": "nasal"
+            }
+          ]
+        },
+        {
+          "slug": "humming_5min",
+          "techniqueSlug": "humming_breath",
+          "durationSec": 300,
+          "difficulty": "gentle",
+          "posture": "seated",
+          "phases": [
+            {
+              "seq": 0,
+              "type": "inhale",
+              "seconds": 4,
+              "bodyRegionCode": "brow",
+              "breathRoute": "nasal"
+            },
+            {
+              "seq": 1,
+              "type": "exhale",
+              "seconds": 8,
+              "bodyRegionCode": "brow",
+              "breathRoute": "nasal"
+            }
+          ]
+        }
+      ],
+      "energyScripts": [],
+      "contraindicationRules": [
+        {
+          "id": "retention_water",
+          "techniqueSlug": null,
+          "severity": "block",
+          "conditionCode": "in_or_near_water",
+          "messageKey": "safety.never_in_water"
+        }
+      ],
+      "mediaAssets": [
+        {
+          "id": "voice_intro_en",
+          "kind": "audio",
+          "locale": "en",
+          "uri": "asset://voice/intro_en.m4a",
+          "bundled": true,
+          "licence": "CC0-1.0",
+          "attribution": "Commissioned for Breathe",
+          "rightsClass": "cc0"
+        }
+      ],
+      "translations": [
+        {
+          "key": "region.perineum",
+          "locale": "en",
+          "value": "Base",
+          "rtl": false
+        },
+        {
+          "key": "region.lower_belly",
+          "locale": "en",
+          "value": "Lower belly",
+          "rtl": false
+        },
+        {
+          "key": "region.navel",
+          "locale": "en",
+          "value": "Navel",
+          "rtl": false
+        },
+        {
+          "key": "region.heart",
+          "locale": "en",
+          "value": "Heart",
+          "rtl": false
+        },
+        {
+          "key": "region.throat",
+          "locale": "en",
+          "value": "Throat",
+          "rtl": false
+        },
+        {
+          "key": "region.brow",
+          "locale": "en",
+          "value": "Brow",
+          "rtl": false
+        },
+        {
+          "key": "region.crown",
+          "locale": "en",
+          "value": "Crown",
+          "rtl": false
+        },
+        {
+          "key": "felt.warmth",
+          "locale": "en",
+          "value": "Warmth",
+          "rtl": false
+        },
+        {
+          "key": "felt.expansion",
+          "locale": "en",
+          "value": "Expansion",
+          "rtl": false
+        },
+        {
+          "key": "felt.tingling",
+          "locale": "en",
+          "value": "Tingling",
+          "rtl": false
+        },
+        {
+          "key": "felt.settling",
+          "locale": "en",
+          "value": "Settling",
+          "rtl": false
+        },
+        {
+          "key": "safety.never_in_water",
+          "locale": "en",
+          "value": "Never practice in or near water.",
+          "rtl": false
+        },
+        {
+          "key": "tech.slow_breathing.name",
+          "locale": "en",
+          "value": "Slow breathing",
+          "rtl": false
+        },
+        {
+          "key": "tech.slow_breathing.summary",
+          "locale": "en",
+          "value": "Smooth, even breathing at about six breaths a minute to settle the nervous system.",
+          "rtl": false
+        },
+        {
+          "key": "tech.slow_breathing.felt",
+          "locale": "en",
+          "value": "Calm and settled; breath and heartbeat seeming to sync.",
+          "rtl": false
+        },
+        {
+          "key": "tech.breath_awareness.name",
+          "locale": "en",
+          "value": "Breath awareness",
+          "rtl": false
+        },
+        {
+          "key": "tech.breath_awareness.summary",
+          "locale": "en",
+          "value": "Rest your attention on the natural breath, returning gently whenever the mind wanders.",
+          "rtl": false
+        },
+        {
+          "key": "tech.breath_awareness.felt",
+          "locale": "en",
+          "value": "Quiet, anchored, present.",
+          "rtl": false
+        },
+        {
+          "key": "tech.box_breathing.name",
+          "locale": "en",
+          "value": "Box breathing",
+          "rtl": false
+        },
+        {
+          "key": "tech.box_breathing.summary",
+          "locale": "en",
+          "value": "Equal counts — in, hold, out, hold — to stay calm and alert.",
+          "rtl": false
+        },
+        {
+          "key": "tech.box_breathing.felt",
+          "locale": "en",
+          "value": "Steady, contained, composed.",
+          "rtl": false
+        },
+        {
+          "key": "tech.four_seven_eight.name",
+          "locale": "en",
+          "value": "4-7-8 breathing",
+          "rtl": false
+        },
+        {
+          "key": "tech.four_seven_eight.summary",
+          "locale": "en",
+          "value": "Inhale 4, hold 7, a long exhale of 8 — a relaxing pattern for winding down.",
+          "rtl": false
+        },
+        {
+          "key": "tech.four_seven_eight.felt",
+          "locale": "en",
+          "value": "Progressively drowsy, heavy, settling.",
+          "rtl": false
+        },
+        {
+          "key": "tech.four_seven_eight.safety",
+          "locale": "en",
+          "value": "The 7-count hold can cause light-headedness — shorten it if needed and practice seated or lying down.",
+          "rtl": false
+        },
+        {
+          "key": "tech.humming_breath.name",
+          "locale": "en",
+          "value": "Humming breath",
+          "rtl": false
+        },
+        {
+          "key": "tech.humming_breath.summary",
+          "locale": "en",
+          "value": "A long, gentle hum on the exhale to soothe and quiet the mind.",
+          "rtl": false
+        },
+        {
+          "key": "tech.humming_breath.felt",
+          "locale": "en",
+          "value": "Soft vibration in the head and chest; calming.",
+          "rtl": false
+        }
+      ]
+    },
+    {
+      "pack": {
+        "slug": "yogic",
+        "kind": "tradition",
+        "traditionSlug": "yogic",
+        "version": 1,
+        "sizeBytes": 0,
+        "availableLocales": [
+          "en",
+          "hi",
+          "ta"
+        ]
+      },
+      "traditions": [
+        {
+          "slug": "yogic",
+          "displayNameKey": "tradition.yogic.name",
+          "family": "indic",
+          "cosmologySummaryKey": "tradition.yogic.cosmology",
+          "lineageNotesKey": "tradition.yogic.lineage",
+          "provenance": "classical",
+          "isModernSynthesis": false,
+          "requiresInitiationNote": false,
+          "isClosedPractice": false,
+          "beliefLabelKey": "tradition.yogic.beliefLabel",
+          "defaultThemeSlug": "yogic_tantric"
+        }
+      ],
+      "energyCenters": [
+        {
+          "slug": "muladhara",
+          "traditionSlug": "yogic",
+          "displayNameKey": "center.muladhara.name",
+          "ordinal": 1,
+          "bodyRegionCode": "perineum",
+          "geometryMotif": "lotus",
+          "petalCount": 4,
+          "seedSyllableKey": "bija.lam",
+          "colorToken": "#D7263D",
+          "colorProvenance": "modern_rainbow",
+          "elementKey": "element.earth",
+          "feltQualities": [
+            "warmth",
+            "settling"
+          ],
+          "notesKey": "center.muladhara.note"
+        },
+        {
+          "slug": "svadhisthana",
+          "traditionSlug": "yogic",
+          "displayNameKey": "center.svadhisthana.name",
+          "ordinal": 2,
+          "bodyRegionCode": "lower_belly",
+          "geometryMotif": "lotus",
+          "petalCount": 6,
+          "seedSyllableKey": "bija.vam",
+          "colorToken": "#F46036",
+          "colorProvenance": "modern_rainbow",
+          "elementKey": "element.water",
+          "feltQualities": [
+            "warmth",
+            "expansion"
+          ],
+          "notesKey": "center.svadhisthana.note"
+        },
+        {
+          "slug": "manipura",
+          "traditionSlug": "yogic",
+          "displayNameKey": "center.manipura.name",
+          "ordinal": 3,
+          "bodyRegionCode": "navel",
+          "geometryMotif": "triangle_down",
+          "petalCount": 10,
+          "seedSyllableKey": "bija.ram",
+          "colorToken": "#F4D35E",
+          "colorProvenance": "modern_rainbow",
+          "elementKey": "element.fire",
+          "feltQualities": [
+            "warmth"
+          ],
+          "notesKey": "center.manipura.note"
+        },
+        {
+          "slug": "anahata",
+          "traditionSlug": "yogic",
+          "displayNameKey": "center.anahata.name",
+          "ordinal": 4,
+          "bodyRegionCode": "heart",
+          "geometryMotif": "hexagram",
+          "petalCount": 12,
+          "seedSyllableKey": "bija.yam",
+          "colorToken": "#3DA35D",
+          "colorProvenance": "modern_rainbow",
+          "elementKey": "element.air",
+          "feltQualities": [
+            "expansion"
+          ],
+          "notesKey": "center.anahata.note"
+        },
+        {
+          "slug": "vishuddha",
+          "traditionSlug": "yogic",
+          "displayNameKey": "center.vishuddha.name",
+          "ordinal": 5,
+          "bodyRegionCode": "throat",
+          "geometryMotif": "circle",
+          "petalCount": 16,
+          "seedSyllableKey": "bija.ham",
+          "colorToken": "#2E86AB",
+          "colorProvenance": "modern_rainbow",
+          "elementKey": "element.ether",
+          "feltQualities": [
+            "expansion"
+          ],
+          "notesKey": "center.vishuddha.note"
+        },
+        {
+          "slug": "ajna",
+          "traditionSlug": "yogic",
+          "displayNameKey": "center.ajna.name",
+          "ordinal": 6,
+          "bodyRegionCode": "brow",
+          "geometryMotif": "lotus",
+          "petalCount": 2,
+          "seedSyllableKey": "bija.om",
+          "colorToken": "#3B3B98",
+          "colorProvenance": "modern_rainbow",
+          "elementKey": "element.mind",
+          "feltQualities": [
+            "tingling"
+          ],
+          "notesKey": "center.ajna.note"
+        },
+        {
+          "slug": "sahasrara",
+          "traditionSlug": "yogic",
+          "displayNameKey": "center.sahasrara.name",
+          "ordinal": 7,
+          "bodyRegionCode": "crown",
+          "geometryMotif": "lotus",
+          "petalCount": 1000,
+          "colorToken": "#E6E6FA",
+          "colorProvenance": "modern_rainbow",
+          "elementKey": "element.consciousness",
+          "feltQualities": [
+            "tingling"
+          ],
+          "notesKey": "center.sahasrara.note"
+        }
+      ],
+      "energyChannels": [
+        {
+          "slug": "sushumna",
+          "traditionSlug": "yogic",
+          "displayNameKey": "channel.sushumna.name",
+          "role": "central",
+          "colorToken": "#C9A227",
+          "polarityKey": "channel.sushumna.polarity"
+        },
+        {
+          "slug": "ida",
+          "traditionSlug": "yogic",
+          "displayNameKey": "channel.ida.name",
+          "role": "left",
+          "colorToken": "#9FB8E6",
+          "polarityKey": "channel.ida.polarity"
+        },
+        {
+          "slug": "pingala",
+          "traditionSlug": "yogic",
+          "displayNameKey": "channel.pingala.name",
+          "role": "right",
+          "colorToken": "#E07A5F",
+          "polarityKey": "channel.pingala.polarity"
+        }
+      ],
+      "bodyRegions": [],
+      "visualThemes": [
+        {
+          "slug": "yogic_tantric",
+          "traditionSlug": "yogic",
+          "paletteJson": {
+            "accent": "#C9A227",
+            "axis": "#C9A227",
+            "energyRise": "#E6B3FF",
+            "heatCore": "#F4D35E",
+            "lightRefined": "#FFFFFF"
+          },
+          "motifSet": "lotus_yantra",
+          "shaderKey": "energy_rise",
+          "reduceMotionFallback": "crossfade"
+        }
+      ],
+      "feltSenseVocab": [],
       "techniques": [
         {
           "slug": "nadi_shodhana",
@@ -135,12 +768,101 @@
             {
               "goalCode": "breath_mechanics",
               "strength": 0.6
+            },
+            {
+              "goalCode": "traditional_practice",
+              "strength": 0.7
             }
           ],
           "intensityClass": "gentle",
           "requiresSafetyGate": false,
           "feltExperienceKey": "tech.nadi_shodhana.felt",
           "safetyNotesKey": "tech.nadi_shodhana.safety"
+        },
+        {
+          "slug": "ujjayi",
+          "canonicalNameKey": "tech.ujjayi.name",
+          "aliases": [
+            "Ocean breath",
+            "Victorious breath"
+          ],
+          "summaryKey": "tech.ujjayi.summary",
+          "primaryTraditionSlug": "yogic",
+          "traditionSlugs": [
+            "yogic"
+          ],
+          "goals": [
+            {
+              "goalCode": "focus",
+              "strength": 1
+            },
+            {
+              "goalCode": "calm",
+              "strength": 0.6
+            },
+            {
+              "goalCode": "traditional_practice",
+              "strength": 0.7
+            }
+          ],
+          "intensityClass": "gentle",
+          "requiresSafetyGate": false,
+          "feltExperienceKey": "tech.ujjayi.felt"
+        },
+        {
+          "slug": "bhramari",
+          "canonicalNameKey": "tech.bhramari.name",
+          "aliases": [
+            "Humming-bee breath"
+          ],
+          "summaryKey": "tech.bhramari.summary",
+          "primaryTraditionSlug": "yogic",
+          "traditionSlugs": [
+            "yogic"
+          ],
+          "goals": [
+            {
+              "goalCode": "calm",
+              "strength": 1
+            },
+            {
+              "goalCode": "sleep",
+              "strength": 0.7
+            },
+            {
+              "goalCode": "traditional_practice",
+              "strength": 0.7
+            }
+          ],
+          "intensityClass": "gentle",
+          "requiresSafetyGate": false,
+          "feltExperienceKey": "tech.bhramari.felt"
+        },
+        {
+          "slug": "bhastrika",
+          "canonicalNameKey": "tech.bhastrika.name",
+          "aliases": [
+            "Bellows breath"
+          ],
+          "summaryKey": "tech.bhastrika.summary",
+          "primaryTraditionSlug": "yogic",
+          "traditionSlugs": [
+            "yogic"
+          ],
+          "goals": [
+            {
+              "goalCode": "energy",
+              "strength": 1
+            },
+            {
+              "goalCode": "traditional_practice",
+              "strength": 0.7
+            }
+          ],
+          "intensityClass": "advanced_caution",
+          "requiresSafetyGate": true,
+          "feltExperienceKey": "tech.bhastrika.felt",
+          "safetyNotesKey": "tech.bhastrika.safety"
         }
       ],
       "sessionTemplates": [
@@ -168,6 +890,78 @@
           ],
           "defaultThemeSlug": "yogic_tantric",
           "defaultEnergyScriptSlug": "prana_rise"
+        },
+        {
+          "slug": "ujjayi_5min",
+          "techniqueSlug": "ujjayi",
+          "durationSec": 300,
+          "difficulty": "gentle",
+          "posture": "seated",
+          "phases": [
+            {
+              "seq": 0,
+              "type": "inhale",
+              "seconds": 5,
+              "bodyRegionCode": "throat",
+              "breathRoute": "nasal"
+            },
+            {
+              "seq": 1,
+              "type": "exhale",
+              "seconds": 6,
+              "bodyRegionCode": "throat",
+              "breathRoute": "nasal"
+            }
+          ],
+          "defaultThemeSlug": "yogic_tantric"
+        },
+        {
+          "slug": "bhramari_5min",
+          "techniqueSlug": "bhramari",
+          "durationSec": 300,
+          "difficulty": "gentle",
+          "posture": "seated",
+          "phases": [
+            {
+              "seq": 0,
+              "type": "inhale",
+              "seconds": 4,
+              "bodyRegionCode": "brow",
+              "breathRoute": "nasal"
+            },
+            {
+              "seq": 1,
+              "type": "exhale",
+              "seconds": 8,
+              "bodyRegionCode": "brow",
+              "breathRoute": "nasal"
+            }
+          ],
+          "defaultThemeSlug": "yogic_tantric"
+        },
+        {
+          "slug": "bhastrika_round",
+          "techniqueSlug": "bhastrika",
+          "durationSec": 90,
+          "difficulty": "advanced_caution",
+          "posture": "seated",
+          "phases": [
+            {
+              "seq": 0,
+              "type": "inhale",
+              "seconds": 1.5,
+              "bodyRegionCode": "navel",
+              "breathRoute": "nasal"
+            },
+            {
+              "seq": 1,
+              "type": "exhale",
+              "seconds": 1.5,
+              "bodyRegionCode": "navel",
+              "breathRoute": "nasal"
+            }
+          ],
+          "defaultThemeSlug": "yogic_tantric"
         }
       ],
       "energyScripts": [
@@ -183,33 +977,14 @@
               "toRegion": "crown",
               "channelSlug": "sushumna",
               "intensity": 0.6,
-              "colorToken": "energy.rise",
+              "colorToken": "#E6B3FF",
               "labelKey": "energy.rise.label"
             }
           ]
         }
       ],
-      "contraindicationRules": [
-        {
-          "id": "retention_water",
-          "techniqueSlug": null,
-          "severity": "block",
-          "conditionCode": "in_or_near_water",
-          "messageKey": "safety.never_in_water"
-        }
-      ],
-      "mediaAssets": [
-        {
-          "id": "voice_intro_en",
-          "kind": "audio",
-          "locale": "en",
-          "uri": "asset://voice/intro_en.m4a",
-          "bundled": true,
-          "licence": "CC0-1.0",
-          "attribution": "Commissioned for Breathe",
-          "rightsClass": "cc0"
-        }
-      ],
+      "contraindicationRules": [],
+      "mediaAssets": [],
       "translations": [
         {
           "key": "tradition.yogic.name",
@@ -218,15 +993,951 @@
           "rtl": false
         },
         {
-          "key": "center.manipura",
+          "key": "tradition.yogic.name",
+          "locale": "hi",
+          "value": "योगिक",
+          "rtl": false
+        },
+        {
+          "key": "tradition.yogic.name",
+          "locale": "ta",
+          "value": "யோகா மரபு",
+          "rtl": false
+        },
+        {
+          "key": "tradition.yogic.cosmology",
           "locale": "en",
-          "value": "Maṇipūra",
+          "value": "Prāṇa is the vital life-force of which breath is the grossest expression; prāṇāyāma works with it through channels (nāḍīs) and centers (chakras).",
+          "rtl": false
+        },
+        {
+          "key": "tradition.yogic.cosmology",
+          "locale": "hi",
+          "value": "प्राण वह जीवनी-शक्ति है जिसकी श्वास स्थूलतम अभिव्यक्ति है; प्राणायाम इसे नाड़ियों और चक्रों के माध्यम से साधता है।",
+          "rtl": false
+        },
+        {
+          "key": "tradition.yogic.cosmology",
+          "locale": "ta",
+          "value": "பிராணன் என்பது உயிராற்றல்; மூச்சு அதன் மிகப் பருண்மையான வெளிப்பாடு. பிராணாயாமம் இதை நாடிகள் மற்றும் சக்கரங்கள் வழியாக செயல்படுத்துகிறது.",
+          "rtl": false
+        },
+        {
+          "key": "tradition.yogic.lineage",
+          "locale": "en",
+          "value": "Codified from the Upanishads and Patañjali through the medieval Haṭha-yoga corpus (Haṭha Yoga Pradīpikā, Gheraṇḍa Saṁhitā).",
+          "rtl": false
+        },
+        {
+          "key": "tradition.yogic.lineage",
+          "locale": "hi",
+          "value": "उपनिषदों और पतंजलि से लेकर मध्यकालीन हठयोग ग्रंथों (हठयोग प्रदीपिका, घेरण्ड संहिता) तक संहिताबद्ध।",
+          "rtl": false
+        },
+        {
+          "key": "tradition.yogic.lineage",
+          "locale": "ta",
+          "value": "உபநிடதங்கள் மற்றும் பதஞ்சலி முதல் இடைக்கால ஹட யோக நூல்கள் (ஹட யோக பிரதீபிகை, கேரண்ட சம்ஹிதை) வரை தொகுக்கப்பட்டது.",
+          "rtl": false
+        },
+        {
+          "key": "tradition.yogic.beliefLabel",
+          "locale": "en",
+          "value": "Prāṇa and the chakras are a contemplative, belief-based model of felt experience — not a measured anatomical or medical structure.",
+          "rtl": false
+        },
+        {
+          "key": "tradition.yogic.beliefLabel",
+          "locale": "hi",
+          "value": "प्राण और चक्र अनुभूति का एक चिंतनशील, विश्वास-आधारित प्रतिमान हैं — कोई मापित शारीरिक या चिकित्सकीय संरचना नहीं।",
+          "rtl": false
+        },
+        {
+          "key": "tradition.yogic.beliefLabel",
+          "locale": "ta",
+          "value": "பிராணனும் சக்கரங்களும் உணர்வின் ஒரு தியான, நம்பிக்கை அடிப்படையிலான மாதிரி — அளவிடப்பட்ட உடற்கூறு அல்லது மருத்துவ அமைப்பு அல்ல.",
+          "rtl": false
+        },
+        {
+          "key": "center.muladhara.name",
+          "locale": "en",
+          "value": "Mūlādhāra (Root)",
+          "rtl": false
+        },
+        {
+          "key": "center.muladhara.name",
+          "locale": "hi",
+          "value": "मूलाधार",
+          "rtl": false
+        },
+        {
+          "key": "center.muladhara.name",
+          "locale": "ta",
+          "value": "மூலாதாரம்",
+          "rtl": false
+        },
+        {
+          "key": "center.muladhara.note",
+          "locale": "en",
+          "value": "Classically deep red with a yellow earth-square (pṛthvī).",
+          "rtl": false
+        },
+        {
+          "key": "center.muladhara.note",
+          "locale": "hi",
+          "value": "शास्त्रीय रूप से गहरा लाल, साथ में पीला पृथ्वी-चतुर्भुज।",
+          "rtl": false
+        },
+        {
+          "key": "center.muladhara.note",
+          "locale": "ta",
+          "value": "பாரம்பரியமாக கடும் சிவப்பு, மண்ணைக் குறிக்கும் மஞ்சள் சதுரத்துடன்.",
+          "rtl": false
+        },
+        {
+          "key": "center.svadhisthana.name",
+          "locale": "en",
+          "value": "Svādhiṣṭhāna (Sacral)",
+          "rtl": false
+        },
+        {
+          "key": "center.svadhisthana.name",
+          "locale": "hi",
+          "value": "स्वाधिष्ठान",
+          "rtl": false
+        },
+        {
+          "key": "center.svadhisthana.name",
+          "locale": "ta",
+          "value": "சுவாதிஷ்டானம்",
+          "rtl": false
+        },
+        {
+          "key": "center.svadhisthana.note",
+          "locale": "en",
+          "value": "Vermilion petals with a white water-crescent (candra).",
+          "rtl": false
+        },
+        {
+          "key": "center.svadhisthana.note",
+          "locale": "hi",
+          "value": "श्वेत जल-अर्धचंद्र के साथ सिंदूरी पंखुड़ियाँ।",
+          "rtl": false
+        },
+        {
+          "key": "center.svadhisthana.note",
+          "locale": "ta",
+          "value": "வெண் நிலா-பிறையுடன் சிந்தூர இதழ்கள்.",
+          "rtl": false
+        },
+        {
+          "key": "center.manipura.name",
+          "locale": "en",
+          "value": "Maṇipūra (Navel)",
+          "rtl": false
+        },
+        {
+          "key": "center.manipura.name",
+          "locale": "hi",
+          "value": "मणिपूर",
+          "rtl": false
+        },
+        {
+          "key": "center.manipura.name",
+          "locale": "ta",
+          "value": "மணிபூரகம்",
+          "rtl": false
+        },
+        {
+          "key": "center.manipura.note",
+          "locale": "en",
+          "value": "Classically a red fire-triangle — not the modern yellow.",
+          "rtl": false
+        },
+        {
+          "key": "center.manipura.note",
+          "locale": "hi",
+          "value": "शास्त्रीय रूप से लाल अग्नि-त्रिकोण — आधुनिक पीला नहीं।",
+          "rtl": false
+        },
+        {
+          "key": "center.manipura.note",
+          "locale": "ta",
+          "value": "பாரம்பரியமாக சிவப்பு அக்னி-முக்கோணம் — நவீன மஞ்சள் அல்ல.",
+          "rtl": false
+        },
+        {
+          "key": "center.anahata.name",
+          "locale": "en",
+          "value": "Anāhata (Heart)",
+          "rtl": false
+        },
+        {
+          "key": "center.anahata.name",
+          "locale": "hi",
+          "value": "अनाहत",
+          "rtl": false
+        },
+        {
+          "key": "center.anahata.name",
+          "locale": "ta",
+          "value": "அநாகதம்",
+          "rtl": false
+        },
+        {
+          "key": "center.anahata.note",
+          "locale": "en",
+          "value": "Smoke-grey petals with a hexagram; modern systems use green.",
+          "rtl": false
+        },
+        {
+          "key": "center.anahata.note",
+          "locale": "hi",
+          "value": "षट्कोण के साथ धूम्र-धूसर पंखुड़ियाँ; आधुनिक प्रणाली में हरा।",
+          "rtl": false
+        },
+        {
+          "key": "center.anahata.note",
+          "locale": "ta",
+          "value": "அறுகோணத்துடன் புகை-சாம்பல் இதழ்கள்; நவீன முறையில் பச்சை.",
+          "rtl": false
+        },
+        {
+          "key": "center.vishuddha.name",
+          "locale": "en",
+          "value": "Viśuddha (Throat)",
+          "rtl": false
+        },
+        {
+          "key": "center.vishuddha.name",
+          "locale": "hi",
+          "value": "विशुद्ध",
+          "rtl": false
+        },
+        {
+          "key": "center.vishuddha.name",
+          "locale": "ta",
+          "value": "விசுத்தி",
+          "rtl": false
+        },
+        {
+          "key": "center.vishuddha.note",
+          "locale": "en",
+          "value": "Smoky-purple petals with a white moon-disc — classically not blue.",
+          "rtl": false
+        },
+        {
+          "key": "center.vishuddha.note",
+          "locale": "hi",
+          "value": "श्वेत चंद्र-बिंब के साथ धूम्र-बैंगनी पंखुड़ियाँ — शास्त्रीय रूप से नीला नहीं।",
+          "rtl": false
+        },
+        {
+          "key": "center.vishuddha.note",
+          "locale": "ta",
+          "value": "வெண் நிலா-வட்டத்துடன் புகை-ஊதா இதழ்கள் — பாரம்பரியமாக நீலம் அல்ல.",
+          "rtl": false
+        },
+        {
+          "key": "center.ajna.name",
+          "locale": "en",
+          "value": "Ājñā (Brow)",
+          "rtl": false
+        },
+        {
+          "key": "center.ajna.name",
+          "locale": "hi",
+          "value": "आज्ञा",
+          "rtl": false
+        },
+        {
+          "key": "center.ajna.name",
+          "locale": "ta",
+          "value": "ஆக்ஞா",
+          "rtl": false
+        },
+        {
+          "key": "center.ajna.note",
+          "locale": "en",
+          "value": "Two white petals with OM; modern systems use indigo.",
+          "rtl": false
+        },
+        {
+          "key": "center.ajna.note",
+          "locale": "hi",
+          "value": "ॐ के साथ दो श्वेत पंखुड़ियाँ; आधुनिक प्रणाली में नील।",
+          "rtl": false
+        },
+        {
+          "key": "center.ajna.note",
+          "locale": "ta",
+          "value": "ௐ உடன் இரு வெண் இதழ்கள்; நவீன முறையில் இண்டிகோ.",
+          "rtl": false
+        },
+        {
+          "key": "center.sahasrara.name",
+          "locale": "en",
+          "value": "Sahasrāra (Crown)",
+          "rtl": false
+        },
+        {
+          "key": "center.sahasrara.name",
+          "locale": "hi",
+          "value": "सहस्रार",
+          "rtl": false
+        },
+        {
+          "key": "center.sahasrara.name",
+          "locale": "ta",
+          "value": "சகஸ்ராரம்",
+          "rtl": false
+        },
+        {
+          "key": "center.sahasrara.note",
+          "locale": "en",
+          "value": "A thousand-petalled lotus, luminous white.",
+          "rtl": false
+        },
+        {
+          "key": "center.sahasrara.note",
+          "locale": "hi",
+          "value": "सहस्र-दल कमल, दीप्त श्वेत।",
+          "rtl": false
+        },
+        {
+          "key": "center.sahasrara.note",
+          "locale": "ta",
+          "value": "ஆயிரம் இதழ் தாமரை, ஒளிரும் வெண்மை.",
+          "rtl": false
+        },
+        {
+          "key": "element.earth",
+          "locale": "en",
+          "value": "Earth",
+          "rtl": false
+        },
+        {
+          "key": "element.earth",
+          "locale": "hi",
+          "value": "पृथ्वी",
+          "rtl": false
+        },
+        {
+          "key": "element.earth",
+          "locale": "ta",
+          "value": "மண்",
+          "rtl": false
+        },
+        {
+          "key": "element.water",
+          "locale": "en",
+          "value": "Water",
+          "rtl": false
+        },
+        {
+          "key": "element.water",
+          "locale": "hi",
+          "value": "जल",
+          "rtl": false
+        },
+        {
+          "key": "element.water",
+          "locale": "ta",
+          "value": "நீர்",
+          "rtl": false
+        },
+        {
+          "key": "element.fire",
+          "locale": "en",
+          "value": "Fire",
+          "rtl": false
+        },
+        {
+          "key": "element.fire",
+          "locale": "hi",
+          "value": "अग्नि",
+          "rtl": false
+        },
+        {
+          "key": "element.fire",
+          "locale": "ta",
+          "value": "அக்னி",
+          "rtl": false
+        },
+        {
+          "key": "element.air",
+          "locale": "en",
+          "value": "Air",
+          "rtl": false
+        },
+        {
+          "key": "element.air",
+          "locale": "hi",
+          "value": "वायु",
+          "rtl": false
+        },
+        {
+          "key": "element.air",
+          "locale": "ta",
+          "value": "காற்று",
+          "rtl": false
+        },
+        {
+          "key": "element.ether",
+          "locale": "en",
+          "value": "Ether",
+          "rtl": false
+        },
+        {
+          "key": "element.ether",
+          "locale": "hi",
+          "value": "आकाश",
+          "rtl": false
+        },
+        {
+          "key": "element.ether",
+          "locale": "ta",
+          "value": "ஆகாயம்",
+          "rtl": false
+        },
+        {
+          "key": "element.mind",
+          "locale": "en",
+          "value": "Mind",
+          "rtl": false
+        },
+        {
+          "key": "element.mind",
+          "locale": "hi",
+          "value": "मन",
+          "rtl": false
+        },
+        {
+          "key": "element.mind",
+          "locale": "ta",
+          "value": "மனம்",
+          "rtl": false
+        },
+        {
+          "key": "element.consciousness",
+          "locale": "en",
+          "value": "Consciousness",
+          "rtl": false
+        },
+        {
+          "key": "element.consciousness",
+          "locale": "hi",
+          "value": "चेतना",
+          "rtl": false
+        },
+        {
+          "key": "element.consciousness",
+          "locale": "ta",
+          "value": "உணர்வு",
+          "rtl": false
+        },
+        {
+          "key": "bija.lam",
+          "locale": "en",
+          "value": "LAM",
+          "rtl": false
+        },
+        {
+          "key": "bija.lam",
+          "locale": "hi",
+          "value": "लं",
+          "rtl": false
+        },
+        {
+          "key": "bija.lam",
+          "locale": "ta",
+          "value": "லம்",
+          "rtl": false
+        },
+        {
+          "key": "bija.vam",
+          "locale": "en",
+          "value": "VAM",
+          "rtl": false
+        },
+        {
+          "key": "bija.vam",
+          "locale": "hi",
+          "value": "वं",
+          "rtl": false
+        },
+        {
+          "key": "bija.vam",
+          "locale": "ta",
+          "value": "வம்",
+          "rtl": false
+        },
+        {
+          "key": "bija.ram",
+          "locale": "en",
+          "value": "RAM",
+          "rtl": false
+        },
+        {
+          "key": "bija.ram",
+          "locale": "hi",
+          "value": "रं",
+          "rtl": false
+        },
+        {
+          "key": "bija.ram",
+          "locale": "ta",
+          "value": "ரம்",
+          "rtl": false
+        },
+        {
+          "key": "bija.yam",
+          "locale": "en",
+          "value": "YAM",
+          "rtl": false
+        },
+        {
+          "key": "bija.yam",
+          "locale": "hi",
+          "value": "यं",
+          "rtl": false
+        },
+        {
+          "key": "bija.yam",
+          "locale": "ta",
+          "value": "யம்",
+          "rtl": false
+        },
+        {
+          "key": "bija.ham",
+          "locale": "en",
+          "value": "HAM",
+          "rtl": false
+        },
+        {
+          "key": "bija.ham",
+          "locale": "hi",
+          "value": "हं",
+          "rtl": false
+        },
+        {
+          "key": "bija.ham",
+          "locale": "ta",
+          "value": "ஹம்",
+          "rtl": false
+        },
+        {
+          "key": "bija.om",
+          "locale": "en",
+          "value": "OM",
+          "rtl": false
+        },
+        {
+          "key": "bija.om",
+          "locale": "hi",
+          "value": "ॐ",
+          "rtl": false
+        },
+        {
+          "key": "bija.om",
+          "locale": "ta",
+          "value": "ௐ",
+          "rtl": false
+        },
+        {
+          "key": "channel.sushumna.name",
+          "locale": "en",
+          "value": "Suṣumnā",
+          "rtl": false
+        },
+        {
+          "key": "channel.sushumna.name",
+          "locale": "hi",
+          "value": "सुषुम्ना",
+          "rtl": false
+        },
+        {
+          "key": "channel.sushumna.name",
+          "locale": "ta",
+          "value": "சுழுமுனை",
+          "rtl": false
+        },
+        {
+          "key": "channel.sushumna.polarity",
+          "locale": "en",
+          "value": "central · fire / axis",
+          "rtl": false
+        },
+        {
+          "key": "channel.sushumna.polarity",
+          "locale": "hi",
+          "value": "केंद्रीय · अग्नि / अक्ष",
+          "rtl": false
+        },
+        {
+          "key": "channel.sushumna.polarity",
+          "locale": "ta",
+          "value": "மைய · அக்னி / அச்சு",
+          "rtl": false
+        },
+        {
+          "key": "channel.ida.name",
+          "locale": "en",
+          "value": "Iḍā",
+          "rtl": false
+        },
+        {
+          "key": "channel.ida.name",
+          "locale": "hi",
+          "value": "इडा",
+          "rtl": false
+        },
+        {
+          "key": "channel.ida.name",
+          "locale": "ta",
+          "value": "இடா",
+          "rtl": false
+        },
+        {
+          "key": "channel.ida.polarity",
+          "locale": "en",
+          "value": "left · lunar / cooling",
+          "rtl": false
+        },
+        {
+          "key": "channel.ida.polarity",
+          "locale": "hi",
+          "value": "वाम · चंद्र / शीतल",
+          "rtl": false
+        },
+        {
+          "key": "channel.ida.polarity",
+          "locale": "ta",
+          "value": "இடது · சந்திர / குளிர்",
+          "rtl": false
+        },
+        {
+          "key": "channel.pingala.name",
+          "locale": "en",
+          "value": "Piṅgalā",
+          "rtl": false
+        },
+        {
+          "key": "channel.pingala.name",
+          "locale": "hi",
+          "value": "पिंगला",
+          "rtl": false
+        },
+        {
+          "key": "channel.pingala.name",
+          "locale": "ta",
+          "value": "பிங்களா",
+          "rtl": false
+        },
+        {
+          "key": "channel.pingala.polarity",
+          "locale": "en",
+          "value": "right · solar / heating",
+          "rtl": false
+        },
+        {
+          "key": "channel.pingala.polarity",
+          "locale": "hi",
+          "value": "दक्षिण · सूर्य / उष्ण",
+          "rtl": false
+        },
+        {
+          "key": "channel.pingala.polarity",
+          "locale": "ta",
+          "value": "வலது · சூரிய / வெப்பம்",
           "rtl": false
         },
         {
           "key": "tech.nadi_shodhana.name",
           "locale": "en",
-          "value": "Nāḍī Shodhana",
+          "value": "Nāḍī Śodhana",
+          "rtl": false
+        },
+        {
+          "key": "tech.nadi_shodhana.name",
+          "locale": "hi",
+          "value": "नाड़ी शोधन",
+          "rtl": false
+        },
+        {
+          "key": "tech.nadi_shodhana.name",
+          "locale": "ta",
+          "value": "நாடி சுத்தி",
+          "rtl": false
+        },
+        {
+          "key": "tech.nadi_shodhana.summary",
+          "locale": "en",
+          "value": "Alternate-nostril breathing to balance the iḍā and piṅgalā channels and settle the mind.",
+          "rtl": false
+        },
+        {
+          "key": "tech.nadi_shodhana.summary",
+          "locale": "hi",
+          "value": "इडा और पिंगला नाड़ियों को संतुलित करने और मन को शांत करने हेतु अनुलोम-विलोम श्वास।",
+          "rtl": false
+        },
+        {
+          "key": "tech.nadi_shodhana.summary",
+          "locale": "ta",
+          "value": "இடா மற்றும் பிங்களா நாடிகளை சமன் செய்து மனதை அமைதிப்படுத்தும் மாற்று-நாசி மூச்சு.",
+          "rtl": false
+        },
+        {
+          "key": "tech.nadi_shodhana.felt",
+          "locale": "en",
+          "value": "Even, quiet, balanced — both nostrils flowing.",
+          "rtl": false
+        },
+        {
+          "key": "tech.nadi_shodhana.felt",
+          "locale": "hi",
+          "value": "सम, शांत, संतुलित — दोनों नथुनों से प्रवाह।",
+          "rtl": false
+        },
+        {
+          "key": "tech.nadi_shodhana.felt",
+          "locale": "ta",
+          "value": "சீரான, அமைதியான, சமநிலை — இரு நாசிகளிலும் ஓட்டம்.",
+          "rtl": false
+        },
+        {
+          "key": "tech.nadi_shodhana.safety",
+          "locale": "en",
+          "value": "Keep it comfortable; build retention slowly. Ease off with respiratory or cardiovascular conditions.",
+          "rtl": false
+        },
+        {
+          "key": "tech.nadi_shodhana.safety",
+          "locale": "hi",
+          "value": "इसे सहज रखें; कुम्भक धीरे-धीरे बढ़ाएँ। श्वसन या हृदय संबंधी स्थिति में सावधानी।",
+          "rtl": false
+        },
+        {
+          "key": "tech.nadi_shodhana.safety",
+          "locale": "ta",
+          "value": "வசதியாக வைத்திருங்கள்; நிறுத்தத்தை மெதுவாக அதிகரிக்கவும். சுவாச அல்லது இதய நிலைகளில் கவனம்.",
+          "rtl": false
+        },
+        {
+          "key": "tech.ujjayi.name",
+          "locale": "en",
+          "value": "Ujjāyī",
+          "rtl": false
+        },
+        {
+          "key": "tech.ujjayi.name",
+          "locale": "hi",
+          "value": "उज्जायी",
+          "rtl": false
+        },
+        {
+          "key": "tech.ujjayi.name",
+          "locale": "ta",
+          "value": "உஜ்ஜாயி",
+          "rtl": false
+        },
+        {
+          "key": "tech.ujjayi.summary",
+          "locale": "en",
+          "value": "‘Victorious breath’ — a soft ocean-like sound from a gently narrowed throat.",
+          "rtl": false
+        },
+        {
+          "key": "tech.ujjayi.summary",
+          "locale": "hi",
+          "value": "‘विजयी श्वास’ — हल्के संकुचित कंठ से समुद्र-सी कोमल ध्वनि।",
+          "rtl": false
+        },
+        {
+          "key": "tech.ujjayi.summary",
+          "locale": "ta",
+          "value": "‘வெற்றி மூச்சு’ — மெதுவாக சுருங்கிய தொண்டையிலிருந்து கடல் போன்ற மென் ஒலி.",
+          "rtl": false
+        },
+        {
+          "key": "tech.ujjayi.felt",
+          "locale": "en",
+          "value": "Audible, oceanic, soothing at the back of the throat.",
+          "rtl": false
+        },
+        {
+          "key": "tech.ujjayi.felt",
+          "locale": "hi",
+          "value": "श्रव्य, समुद्र-सी, कंठ के पिछले भाग में सुखद।",
+          "rtl": false
+        },
+        {
+          "key": "tech.ujjayi.felt",
+          "locale": "ta",
+          "value": "கேட்கும், கடல்போன்ற, தொண்டையின் பின்புறம் இதமான.",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhramari.name",
+          "locale": "en",
+          "value": "Bhrāmarī",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhramari.name",
+          "locale": "hi",
+          "value": "भ्रामरी",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhramari.name",
+          "locale": "ta",
+          "value": "ப்ராமரி",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhramari.summary",
+          "locale": "en",
+          "value": "‘Humming-bee breath’ — a long, gentle hum on the exhale to soothe the nerves.",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhramari.summary",
+          "locale": "hi",
+          "value": "‘भ्रामरी’ — नसों को शांत करने हेतु श्वास छोड़ते समय लंबी कोमल गुंजन।",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhramari.summary",
+          "locale": "ta",
+          "value": "‘வண்டு மூச்சு’ — நரம்புகளை அமைதிப்படுத்த மூச்சை வெளியிடும்போது நீண்ட மென் ரீங்காரம்.",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhramari.felt",
+          "locale": "en",
+          "value": "Vibration in the skull, sinuses, and brow; deeply quieting.",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhramari.felt",
+          "locale": "hi",
+          "value": "खोपड़ी, साइनस और भृकुटि में कंपन; गहन शांति।",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhramari.felt",
+          "locale": "ta",
+          "value": "மண்டை, சைனஸ், புருவம் ஆகியவற்றில் அதிர்வு; ஆழ்ந்த அமைதி.",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhastrika.name",
+          "locale": "en",
+          "value": "Bhastrikā",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhastrika.name",
+          "locale": "hi",
+          "value": "भस्त्रिका",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhastrika.name",
+          "locale": "ta",
+          "value": "பஸ்த்ரிகா",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhastrika.summary",
+          "locale": "en",
+          "value": "‘Bellows breath’ — rapid, forceful breathing for heat and vitality. Advanced.",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhastrika.summary",
+          "locale": "hi",
+          "value": "‘धौंकनी श्वास’ — ऊष्मा और ओज हेतु तीव्र, सशक्त श्वास। उन्नत।",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhastrika.summary",
+          "locale": "ta",
+          "value": "‘துருத்தி மூச்சு’ — வெப்பம் மற்றும் சக்திக்கான வேகமான, வலிமையான மூச்சு. மேம்பட்டது.",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhastrika.felt",
+          "locale": "en",
+          "value": "Strong warmth, energization, vigorous pumping; possible light-headedness.",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhastrika.felt",
+          "locale": "hi",
+          "value": "तीव्र ऊष्मा, स्फूर्ति, सशक्त पम्पिंग; हल्का चक्कर संभव।",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhastrika.felt",
+          "locale": "ta",
+          "value": "வலுவான வெப்பம், சுறுசுறுப்பு, வீரியமான இயக்கம்; லேசான மயக்கம் சாத்தியம்.",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhastrika.safety",
+          "locale": "en",
+          "value": "Not in pregnancy, hypertension, heart disease, hernia, epilepsy, or glaucoma. Stop if dizzy. Never near water.",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhastrika.safety",
+          "locale": "hi",
+          "value": "गर्भावस्था, उच्च रक्तचाप, हृदय रोग, हर्निया, मिर्गी या ग्लूकोमा में नहीं। चक्कर आने पर रोकें। पानी के पास कभी नहीं।",
+          "rtl": false
+        },
+        {
+          "key": "tech.bhastrika.safety",
+          "locale": "ta",
+          "value": "கர்ப்பம், உயர் ரத்த அழுத்தம், இதய நோய், குடலிறக்கம், வலிப்பு அல்லது கிளௌகோமாவில் வேண்டாம். மயக்கம் வந்தால் நிறுத்தவும். தண்ணீர் அருகில் ஒருபோதும் வேண்டாம்.",
+          "rtl": false
+        },
+        {
+          "key": "script.prana_rise.summary",
+          "locale": "en",
+          "value": "Prāṇa is drawn up the central channel (suṣumnā) toward the crown.",
+          "rtl": false
+        },
+        {
+          "key": "script.prana_rise.summary",
+          "locale": "hi",
+          "value": "प्राण को केंद्रीय नाड़ी (सुषुम्ना) से ऊपर सहस्रार की ओर ले जाया जाता है।",
+          "rtl": false
+        },
+        {
+          "key": "script.prana_rise.summary",
+          "locale": "ta",
+          "value": "பிராணன் மைய நாடி (சுழுமுனை) வழியாக உச்சந்தலையை நோக்கி எழுப்பப்படுகிறது.",
+          "rtl": false
+        },
+        {
+          "key": "energy.rise.label",
+          "locale": "en",
+          "value": "Energy rising along the spine",
+          "rtl": false
+        },
+        {
+          "key": "energy.rise.label",
+          "locale": "hi",
+          "value": "रीढ़ के साथ ऊपर उठती ऊर्जा",
+          "rtl": false
+        },
+        {
+          "key": "energy.rise.label",
+          "locale": "ta",
+          "value": "முதுகெலும்பு வழியே எழும் ஆற்றல்",
           "rtl": false
         }
       ]

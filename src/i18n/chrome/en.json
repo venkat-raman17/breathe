@@ -1,0 +1,76 @@
+{
+  "tabs": {
+    "home": "Home",
+    "explore": "Explore",
+    "traditions": "Traditions",
+    "reflect": "Reflect",
+    "settings": "Settings"
+  },
+  "onboarding": {
+    "welcomeTitle": "Welcome to Breathe",
+    "welcomeBody": "Breath and energy across the world’s living traditions. Breathe is for well-being and contemplative practice — not medical advice.",
+    "disclaimerContinue": "I understand",
+    "choosePackTitle": "Choose a tradition",
+    "choosePackBody": "Each tradition is a complete world of breath and energy. You can change this anytime.",
+    "chooseLanguageTitle": "Choose your language",
+    "chooseLanguageBody": "Available languages depend on the tradition you chose.",
+    "begin": "Begin"
+  },
+  "traditions": {
+    "title": "Traditions",
+    "intro": "Living traditions of breath and energy — presented as belief and felt experience, never as medical fact.",
+    "active": "Active tradition",
+    "language": "Language",
+    "change": "Change",
+    "comingSoon": "Coming soon",
+    "learnMore": "Explore this tradition"
+  },
+  "learn": {
+    "overview": "Overview",
+    "energyBody": "The energy body",
+    "centers": "Centers",
+    "channels": "Channels",
+    "practices": "Practices",
+    "modernColors": "Modern color system",
+    "modernColorsNote": "The familiar rainbow palette is a modern (~1977) synthesis. Classical sources give different, element-derived colors.",
+    "classical": "Classical",
+    "beginPractice": "Start practice",
+    "element": "Element",
+    "petals": "Petals",
+    "seedSound": "Seed sound",
+    "feltAs": "Felt as"
+  },
+  "session": {
+    "prepare": "Find a comfortable position",
+    "inhale": "Breathe in",
+    "hold": "Hold",
+    "exhale": "Breathe out",
+    "rest": "Rest",
+    "free": "Breathe naturally",
+    "paused": "Paused",
+    "complete": "Complete",
+    "pause": "Pause",
+    "resume": "Resume",
+    "slow": "Slow",
+    "stop": "Stop"
+  },
+  "reflect": {
+    "title": "Reflect",
+    "prompt": "Where did you feel the breath?",
+    "intro": "Tap where you noticed something, then choose how it felt.",
+    "quality": "How did it feel?",
+    "intensity": "How strong?",
+    "notePlaceholder": "Add a note (optional)…",
+    "save": "Save reflection",
+    "skip": "Not now",
+    "empty": "No reflections yet",
+    "emptyBody": "Complete a practice to capture your first felt-sense body map.",
+    "areasNoted": "areas noted"
+  },
+  "common": {
+    "done": "Done",
+    "notNow": "Not now",
+    "loading": "Loading…",
+    "back": "Back"
+  }
+}

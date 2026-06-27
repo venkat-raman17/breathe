@@ -1,137 +1,181 @@
 {
-  "pack": { "slug": "core", "kind": "core", "version": 1 },
-  "traditions": [
-    {
-      "slug": "yogic",
-      "displayNameKey": "tradition.yogic.name",
-      "family": "indic",
-      "cosmologySummaryKey": "tradition.yogic.cosmology",
-      "lineageNotesKey": "tradition.yogic.lineage",
-      "provenance": "classical",
-      "beliefLabelKey": "tradition.yogic.beliefLabel",
-      "defaultThemeSlug": "yogic_tantric"
-    }
-  ],
+  "pack": { "slug": "core", "kind": "core", "version": 1, "availableLocales": ["en"] },
   "bodyRegions": [
+    { "code": "perineum", "displayNameKey": "region.perineum", "view": "both" },
+    { "code": "lower_belly", "displayNameKey": "region.lower_belly", "view": "both" },
     { "code": "navel", "displayNameKey": "region.navel", "view": "both" },
     { "code": "heart", "displayNameKey": "region.heart", "view": "both" },
+    { "code": "throat", "displayNameKey": "region.throat", "view": "both" },
+    { "code": "brow", "displayNameKey": "region.brow", "view": "both" },
     { "code": "crown", "displayNameKey": "region.crown", "view": "both" }
   ],
   "feltSenseVocab": [
     { "code": "warmth", "displayNameKey": "felt.warmth", "valenceDefault": 1, "colorTemp": "warm", "bodyRegionAffinity": ["navel", "heart"] },
-    { "code": "expansion", "displayNameKey": "felt.expansion", "valenceDefault": 1, "colorTemp": "neutral", "bodyRegionAffinity": ["heart", "chest"] }
-  ],
-  "visualThemes": [
-    {
-      "slug": "yogic_tantric",
-      "traditionSlug": "yogic",
-      "paletteJson": { "bg": "#0E0B16", "accent": "#C9A227", "axis": "#C9A227" },
-      "motifSet": "lotus_yantra",
-      "shaderKey": "energy_rise",
-      "reduceMotionFallback": "crossfade"
-    }
-  ],
-  "energyCenters": [
-    {
-      "slug": "manipura",
-      "traditionSlug": "yogic",
-      "displayNameKey": "center.manipura",
-      "ordinal": 3,
-      "bodyRegionCode": "navel",
-      "geometryMotif": "lotus",
-      "petalCount": 10,
-      "seedSyllableKey": "bija.ram",
-      "colorToken": "chakra.solar",
-      "colorProvenance": "modern_rainbow",
-      "elementKey": "element.fire",
-      "feltQualities": ["warmth"],
-      "notesKey": "center.manipura.classicalNote"
-    }
-  ],
-  "energyChannels": [
-    {
-      "slug": "sushumna",
-      "traditionSlug": "yogic",
-      "displayNameKey": "channel.sushumna",
-      "role": "central",
-      "colorToken": "#C9A227",
-      "polarityKey": "polarity.axis"
-    }
+    { "code": "expansion", "displayNameKey": "felt.expansion", "valenceDefault": 1, "colorTemp": "neutral", "bodyRegionAffinity": ["heart", "chest"] },
+    { "code": "tingling", "displayNameKey": "felt.tingling", "valenceDefault": 0, "colorTemp": "cool", "bodyRegionAffinity": ["crown", "brow"] },
+    { "code": "settling", "displayNameKey": "felt.settling", "valenceDefault": 1, "colorTemp": "cool", "bodyRegionAffinity": ["lower_belly", "perineum"] }
   ],
   "techniques": [
     {
-      "slug": "nadi_shodhana",
-      "canonicalNameKey": "tech.nadi_shodhana.name",
-      "aliases": ["Anulom Vilom", "Alternate-nostril breathing"],
-      "summaryKey": "tech.nadi_shodhana.summary",
-      "primaryTraditionSlug": "yogic",
-      "traditionSlugs": ["yogic"],
+      "slug": "slow_breathing",
+      "canonicalNameKey": "tech.slow_breathing.name",
+      "aliases": ["Resonance breathing", "Coherent breathing"],
+      "summaryKey": "tech.slow_breathing.summary",
       "goals": [
         { "goalCode": "calm", "strength": 1 },
-        { "goalCode": "breath_mechanics", "strength": 0.6 }
+        { "goalCode": "breath_mechanics", "strength": 0.8 },
+        { "goalCode": "focus", "strength": 0.5 }
       ],
       "intensityClass": "gentle",
       "requiresSafetyGate": false,
-      "feltExperienceKey": "tech.nadi_shodhana.felt",
-      "safetyNotesKey": "tech.nadi_shodhana.safety"
+      "feltExperienceKey": "tech.slow_breathing.felt"
+    },
+    {
+      "slug": "breath_awareness",
+      "canonicalNameKey": "tech.breath_awareness.name",
+      "aliases": ["Mindful breathing"],
+      "summaryKey": "tech.breath_awareness.summary",
+      "goals": [
+        { "goalCode": "meditative_awareness", "strength": 1 },
+        { "goalCode": "calm", "strength": 0.7 },
+        { "goalCode": "recovery", "strength": 0.6 }
+      ],
+      "intensityClass": "gentle",
+      "requiresSafetyGate": false,
+      "feltExperienceKey": "tech.breath_awareness.felt"
+    },
+    {
+      "slug": "box_breathing",
+      "canonicalNameKey": "tech.box_breathing.name",
+      "aliases": ["Square breathing", "Tactical breathing"],
+      "summaryKey": "tech.box_breathing.summary",
+      "goals": [
+        { "goalCode": "focus", "strength": 1 },
+        { "goalCode": "calm", "strength": 0.7 }
+      ],
+      "intensityClass": "gentle",
+      "requiresSafetyGate": false,
+      "feltExperienceKey": "tech.box_breathing.felt"
+    },
+    {
+      "slug": "four_seven_eight",
+      "canonicalNameKey": "tech.four_seven_eight.name",
+      "aliases": ["4-7-8 breathing", "Relaxing breath"],
+      "summaryKey": "tech.four_seven_eight.summary",
+      "goals": [
+        { "goalCode": "sleep", "strength": 1 },
+        { "goalCode": "calm", "strength": 0.8 }
+      ],
+      "intensityClass": "gentle",
+      "requiresSafetyGate": false,
+      "feltExperienceKey": "tech.four_seven_eight.felt",
+      "safetyNotesKey": "tech.four_seven_eight.safety"
+    },
+    {
+      "slug": "humming_breath",
+      "canonicalNameKey": "tech.humming_breath.name",
+      "aliases": ["Humming exhale"],
+      "summaryKey": "tech.humming_breath.summary",
+      "goals": [
+        { "goalCode": "calm", "strength": 1 },
+        { "goalCode": "sleep", "strength": 0.6 }
+      ],
+      "intensityClass": "gentle",
+      "requiresSafetyGate": false,
+      "feltExperienceKey": "tech.humming_breath.felt"
     }
   ],
   "sessionTemplates": [
     {
-      "slug": "nadi_shodhana_5min",
-      "techniqueSlug": "nadi_shodhana",
+      "slug": "slow_breathing_6min",
+      "techniqueSlug": "slow_breathing",
+      "durationSec": 330,
+      "difficulty": "gentle",
+      "posture": "seated",
+      "phases": [
+        { "seq": 0, "type": "inhale", "seconds": 5.5, "bodyRegionCode": "lower_belly" },
+        { "seq": 1, "type": "exhale", "seconds": 5.5, "bodyRegionCode": "lower_belly" }
+      ]
+    },
+    {
+      "slug": "breath_awareness_5min",
+      "techniqueSlug": "breath_awareness",
+      "durationSec": 300,
+      "difficulty": "gentle",
+      "posture": "seated",
+      "phases": [{ "seq": 0, "type": "free", "seconds": 300, "bodyRegionCode": "chest" }]
+    },
+    {
+      "slug": "box_4444",
+      "techniqueSlug": "box_breathing",
+      "durationSec": 240,
+      "difficulty": "gentle",
+      "posture": "seated",
+      "phases": [
+        { "seq": 0, "type": "inhale", "seconds": 4, "bodyRegionCode": "chest" },
+        { "seq": 1, "type": "hold_in", "seconds": 4 },
+        { "seq": 2, "type": "exhale", "seconds": 4, "bodyRegionCode": "chest" },
+        { "seq": 3, "type": "hold_out", "seconds": 4 }
+      ]
+    },
+    {
+      "slug": "four_seven_eight_cycle",
+      "techniqueSlug": "four_seven_eight",
+      "durationSec": 190,
+      "difficulty": "gentle",
+      "posture": "seated",
+      "phases": [
+        { "seq": 0, "type": "inhale", "seconds": 4, "bodyRegionCode": "lower_belly" },
+        { "seq": 1, "type": "hold_in", "seconds": 7 },
+        { "seq": 2, "type": "exhale", "seconds": 8, "bodyRegionCode": "lower_belly" }
+      ]
+    },
+    {
+      "slug": "humming_5min",
+      "techniqueSlug": "humming_breath",
       "durationSec": 300,
       "difficulty": "gentle",
       "posture": "seated",
       "phases": [
-        { "seq": 0, "type": "inhale", "seconds": 4, "bodyRegionCode": "navel" },
-        { "seq": 1, "type": "exhale", "seconds": 6, "bodyRegionCode": "navel" }
-      ],
-      "defaultThemeSlug": "yogic_tantric",
-      "defaultEnergyScriptSlug": "prana_rise"
-    }
-  ],
-  "energyScripts": [
-    {
-      "slug": "prana_rise",
-      "traditionSlug": "yogic",
-      "summaryKey": "script.prana_rise.summary",
-      "events": [
-        {
-          "atPhaseSeq": 0,
-          "motion": "rise",
-          "fromRegion": "navel",
-          "toRegion": "crown",
-          "channelSlug": "sushumna",
-          "intensity": 0.6,
-          "colorToken": "energy.rise",
-          "labelKey": "energy.rise.label"
-        }
+        { "seq": 0, "type": "inhale", "seconds": 4, "bodyRegionCode": "brow" },
+        { "seq": 1, "type": "exhale", "seconds": 8, "bodyRegionCode": "brow" }
       ]
     }
   ],
   "contraindicationRules": [
-    {
-      "id": "retention_water",
-      "techniqueSlug": null,
-      "severity": "block",
-      "conditionCode": "in_or_near_water",
-      "messageKey": "safety.never_in_water"
-    }
+    { "id": "retention_water", "techniqueSlug": null, "severity": "block", "conditionCode": "in_or_near_water", "messageKey": "safety.never_in_water" }
   ],
   "mediaAssets": [
-    {
-      "id": "voice_intro_en",
-      "kind": "audio",
-      "uri": "asset://voice/intro_en.m4a",
-      "licence": "CC0-1.0",
-      "attribution": "Commissioned for Breathe",
-      "rightsClass": "cc0"
-    }
+    { "id": "voice_intro_en", "kind": "audio", "uri": "asset://voice/intro_en.m4a", "licence": "CC0-1.0", "attribution": "Commissioned for Breathe", "rightsClass": "cc0" }
   ],
   "translations": [
-    { "key": "tradition.yogic.name", "locale": "en", "value": "Yogic" },
-    { "key": "center.manipura", "locale": "en", "value": "Maṇipūra" },
-    { "key": "tech.nadi_shodhana.name", "locale": "en", "value": "Nāḍī Shodhana" }
+    { "key": "region.perineum", "locale": "en", "value": "Base" },
+    { "key": "region.lower_belly", "locale": "en", "value": "Lower belly" },
+    { "key": "region.navel", "locale": "en", "value": "Navel" },
+    { "key": "region.heart", "locale": "en", "value": "Heart" },
+    { "key": "region.throat", "locale": "en", "value": "Throat" },
+    { "key": "region.brow", "locale": "en", "value": "Brow" },
+    { "key": "region.crown", "locale": "en", "value": "Crown" },
+    { "key": "felt.warmth", "locale": "en", "value": "Warmth" },
+    { "key": "felt.expansion", "locale": "en", "value": "Expansion" },
+    { "key": "felt.tingling", "locale": "en", "value": "Tingling" },
+    { "key": "felt.settling", "locale": "en", "value": "Settling" },
+    { "key": "safety.never_in_water", "locale": "en", "value": "Never practice in or near water." },
+    { "key": "tech.slow_breathing.name", "locale": "en", "value": "Slow breathing" },
+    { "key": "tech.slow_breathing.summary", "locale": "en", "value": "Smooth, even breathing at about six breaths a minute to settle the nervous system." },
+    { "key": "tech.slow_breathing.felt", "locale": "en", "value": "Calm and settled; breath and heartbeat seeming to sync." },
+    { "key": "tech.breath_awareness.name", "locale": "en", "value": "Breath awareness" },
+    { "key": "tech.breath_awareness.summary", "locale": "en", "value": "Rest your attention on the natural breath, returning gently whenever the mind wanders." },
+    { "key": "tech.breath_awareness.felt", "locale": "en", "value": "Quiet, anchored, present." },
+    { "key": "tech.box_breathing.name", "locale": "en", "value": "Box breathing" },
+    { "key": "tech.box_breathing.summary", "locale": "en", "value": "Equal counts — in, hold, out, hold — to stay calm and alert." },
+    { "key": "tech.box_breathing.felt", "locale": "en", "value": "Steady, contained, composed." },
+    { "key": "tech.four_seven_eight.name", "locale": "en", "value": "4-7-8 breathing" },
+    { "key": "tech.four_seven_eight.summary", "locale": "en", "value": "Inhale 4, hold 7, a long exhale of 8 — a relaxing pattern for winding down." },
+    { "key": "tech.four_seven_eight.felt", "locale": "en", "value": "Progressively drowsy, heavy, settling." },
+    { "key": "tech.four_seven_eight.safety", "locale": "en", "value": "The 7-count hold can cause light-headedness — shorten it if needed and practice seated or lying down." },
+    { "key": "tech.humming_breath.name", "locale": "en", "value": "Humming breath" },
+    { "key": "tech.humming_breath.summary", "locale": "en", "value": "A long, gentle hum on the exhale to soothe and quiet the mind." },
+    { "key": "tech.humming_breath.felt", "locale": "en", "value": "Soft vibration in the head and chest; calming." }
   ]
 }

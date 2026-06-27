@@ -21,10 +21,19 @@ const VARIANTS = StyleSheet.create({
 export interface AppTextProps extends TextProps {
   variant?: TextVariant;
   color?: TextColor;
+  /** BCP-47 tag (e.g. 'sa', 'ta', 'hi') so screen readers pronounce script fragments correctly. */
+  lang?: string;
 }
 
-export function AppText({ variant = 'body', color = 'hi', style, ...rest }: AppTextProps) {
+export function AppText({ variant = 'body', color = 'hi', lang, style, ...rest }: AppTextProps) {
   const { colors } = useAppTheme();
   const tint = color === 'lo' ? colors.textLo : color === 'accent' ? colors.accent : colors.textHi;
-  return <RNText allowFontScaling {...rest} style={[VARIANTS[variant], { color: tint }, style]} />;
+  return (
+    <RNText
+      allowFontScaling
+      accessibilityLanguage={lang}
+      {...rest}
+      style={[VARIANTS[variant], { color: tint }, style]}
+    />
+  );
 }

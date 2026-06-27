@@ -1,78 +1,86 @@
 import { router } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, View } from 'react-native';
 
+import { LanguagePicker } from '@/components/language-picker';
 import { Screen } from '@/components/screen';
 import { AppText } from '@/components/ui/text';
+import { useContentPacks, useTraditions } from '@/db/hooks';
+import { LOCALE_LABELS } from '@/i18n';
+import { useSettings } from '@/providers/SettingsProvider';
 import { useAppTheme } from '@/theme/ThemeProvider';
 
-interface GalleryEntry {
-  slug: string;
-  name: string;
-  subtitle: string;
-  available: boolean;
+function withEnglish(locales: string[] | undefined): string[] {
+  const ls = locales ?? ['en'];
+  return ls.includes('en') ? ls : ['en', ...ls];
 }
 
-// v1 ships the Yogic tradition fully; others arrive as downloadable packs (docs §5.2).
-const GALLERY: GalleryEntry[] = [
-  { slug: 'yogic', name: 'Yogic', subtitle: 'Prāṇa · chakras · nāḍīs · kuṇḍalinī', available: true },
-  { slug: 'daoist', name: 'Daoist', subtitle: 'Qì · dāntián · microcosmic orbit', available: false },
-  { slug: 'tibetan', name: 'Tibetan', subtitle: 'Tsa-lung · tummo · channels & winds', available: false },
-  { slug: 'zen_hara', name: 'Zen / Hara', subtitle: 'Ki · tanden · zazen breath', available: false },
-  { slug: 'sufi', name: 'Sufi', subtitle: 'Nafas · dhikr · the lataif', available: false },
-];
-
 export default function TraditionsScreen() {
+  const { t } = useTranslation('chrome');
+  const { t: tc } = useTranslation('content');
   const { colors, spacing, radius } = useAppTheme();
+  const { activeTradition, activeLocale, setActiveTradition, setActiveLocale } = useSettings();
+  const { data: traditions } = useTraditions();
+  const { data: packs } = useContentPacks();
+
+  const activePack = packs?.find((p) => p.traditionSlug === activeTradition);
+  const activeLocales = withEnglish(activePack?.availableLocales);
+
+  const openTradition = async (slug: string) => {
+    if (slug !== activeTradition) {
+      await setActiveTradition(slug);
+      const np = withEnglish(packs?.find((p) => p.traditionSlug === slug)?.availableLocales);
+      if (!np.includes(activeLocale)) await setActiveLocale('en');
+    }
+    router.push({ pathname: '/traditions/[slug]', params: { slug } });
+  };
 
   return (
     <Screen>
-      <AppText variant="title">Traditions</AppText>
+      <AppText variant="title">{t('traditions.title')}</AppText>
       <AppText variant="body" color="lo" style={{ marginTop: spacing.xs }}>
-        Living traditions of breath and energy — presented as belief and felt experience, with honest
-        provenance, never as medical fact.
+        {t('traditions.intro')}
       </AppText>
 
+      <AppText variant="caption" color="lo" style={{ marginTop: spacing.xl, marginBottom: spacing.sm }}>
+        {t('traditions.language')}
+      </AppText>
+      <LanguagePicker locales={activeLocales} active={activeLocale} onSelect={(l) => setActiveLocale(l)} />
+
       <View style={{ marginTop: spacing.xl, gap: spacing.md }}>
-        {GALLERY.map((t) => {
-          const body = (
-            <View
+        {(traditions ?? []).map((tr) => {
+          const isActive = tr.slug === activeTradition;
+          const trLocales = withEnglish(packs?.find((p) => p.traditionSlug === tr.slug)?.availableLocales);
+          return (
+            <Pressable
+              key={tr.slug}
+              accessibilityRole="button"
+              accessibilityLabel={`${tc(tr.displayNameKey)}${isActive ? `, ${t('traditions.active')}` : ''}`}
+              onPress={() => openTradition(tr.slug)}
               style={[
                 styles.card,
                 {
                   backgroundColor: colors.surface,
-                  borderColor: colors.border,
+                  borderColor: isActive ? colors.accent : colors.border,
                   borderRadius: radius.lg,
-                  opacity: t.available ? 1 : 0.6,
                 },
               ]}>
-              <View style={styles.cardHead}>
-                <AppText variant="heading">{t.name}</AppText>
-                {!t.available && (
-                  <AppText variant="caption" color="lo">
-                    Pack coming soon
+              <View style={styles.head}>
+                <AppText variant="heading" lang={activeLocale}>
+                  {tc(tr.displayNameKey)}
+                </AppText>
+                {isActive ? (
+                  <AppText variant="caption" color="accent">
+                    {t('traditions.active')}
                   </AppText>
-                )}
+                ) : null}
               </View>
               <AppText variant="caption" color="lo" style={{ marginTop: spacing.xs }}>
-                {t.subtitle}
+                {tc(tr.cosmologySummaryKey)}
               </AppText>
-            </View>
-          );
-
-          if (!t.available) {
-            return (
-              <View key={t.slug} accessibilityLabel={`${t.name}. Pack coming soon.`}>
-                {body}
-              </View>
-            );
-          }
-          return (
-            <Pressable
-              key={t.slug}
-              accessibilityRole="button"
-              accessibilityLabel={`Open the ${t.name} tradition`}
-              onPress={() => router.push({ pathname: '/traditions/[slug]', params: { slug: t.slug } })}>
-              {body}
+              <AppText variant="caption" color="lo" style={{ marginTop: spacing.xs }}>
+                {trLocales.map((l) => LOCALE_LABELS[l] ?? l).join(' · ')}
+              </AppText>
             </Pressable>
           );
         })}
@@ -83,5 +91,5 @@ export default function TraditionsScreen() {
 
 const styles = StyleSheet.create({
   card: { padding: 16, borderWidth: StyleSheet.hairlineWidth },
-  cardHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  head: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
 });

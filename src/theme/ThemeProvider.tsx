@@ -1,14 +1,13 @@
 /**
- * App theme provider. Resolves the active ColorRoles from the active TRADITION (v1: Yogic)
- * and exposes spacing/radius/motion tokens plus the effective reduce-motion flag. There is no
- * "mode" — the experience is always the combined, tradition-forward one; reduce-motion only
- * simplifies the animation, not the symbolism. Renderers consume role names, never literal hexes.
+ * App theme provider. Resolves ColorRoles from the active tradition's theme slug via the DB-backed
+ * theme registry (data-driven — new packs ship a palette, not code). Reduce-motion only simplifies
+ * animation. Renderers consume role names, never literal hexes.
  */
 import { createContext, useContext, useMemo, type ReactNode } from 'react';
 
 import { useA11y } from '@/providers/A11yProvider';
-import { useTradition } from '@/providers/TraditionProvider';
-import { DEFAULT_THEME, TRADITION_THEME } from './palettes';
+import { useSettings } from '@/providers/SettingsProvider';
+import { resolveTheme } from './registry';
 import { motion, radius, spacing, type ColorRoles } from './tokens';
 
 export interface AppTheme {
@@ -16,25 +15,18 @@ export interface AppTheme {
   spacing: typeof spacing;
   radius: typeof radius;
   motion: typeof motion;
-  /** Effective reduce-motion (OS or app override). */
   reduceMotion: boolean;
 }
 
 const AppThemeContext = createContext<AppTheme | null>(null);
 
 export function AppThemeProvider({ children }: { children: ReactNode }) {
-  const { traditionSlug } = useTradition();
+  const { activeThemeSlug } = useSettings();
   const { reduceMotion } = useA11y();
 
   const value = useMemo<AppTheme>(
-    () => ({
-      colors: TRADITION_THEME[traditionSlug] ?? DEFAULT_THEME,
-      spacing,
-      radius,
-      motion,
-      reduceMotion,
-    }),
-    [traditionSlug, reduceMotion],
+    () => ({ colors: resolveTheme(activeThemeSlug), spacing, radius, motion, reduceMotion }),
+    [activeThemeSlug, reduceMotion],
   );
 
   return <AppThemeContext.Provider value={value}>{children}</AppThemeContext.Provider>;

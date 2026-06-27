@@ -182,6 +182,8 @@ export const ContentPackSchema = z.strictObject({
   traditionSlug: Slug.nullable().default(null),
   version: z.number().int().positive(),
   sizeBytes: z.number().int().nonnegative().default(0),
+  /** Languages this pack ships content in. English is always implicitly included (the build normalizes it). */
+  availableLocales: z.array(z.string()).default(['en']),
   checksum: z.string().optional(),
   licenseSummaryKey: Key.optional(),
   minAppVersion: z.string().optional(),

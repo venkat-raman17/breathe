@@ -103,6 +103,8 @@ function main() {
       }
       continue;
     }
+    // Normalize: English is available in every pack.
+    result.data.pack.availableLocales = [...new Set(['en', ...result.data.pack.availableLocales])];
     validateReferences(result.data, file);
     bundles.push(result.data);
   }

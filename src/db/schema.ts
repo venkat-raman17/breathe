@@ -242,7 +242,30 @@ const v1: string[] = [
   );`,
 ];
 
-export const MIGRATIONS: Migration[] = [{ version: 1, statements: v1 }];
+// v2 — content packs (with per-pack available languages) + a key/value settings store.
+// These were missing from v1; appended (not edited into v1) so existing dev DBs upgrade cleanly.
+const v2: string[] = [
+  `CREATE TABLE IF NOT EXISTS content_pack (
+    slug TEXT PRIMARY KEY,
+    kind TEXT NOT NULL,
+    tradition_slug TEXT,
+    version INTEGER NOT NULL DEFAULT 1,
+    size_bytes INTEGER NOT NULL DEFAULT 0,
+    available_locales TEXT NOT NULL DEFAULT '["en"]',
+    license_summary_key TEXT,
+    min_app_version TEXT
+  );`,
+
+  `CREATE TABLE IF NOT EXISTS app_setting (
+    key TEXT PRIMARY KEY,
+    value TEXT NOT NULL
+  );`,
+];
+
+export const MIGRATIONS: Migration[] = [
+  { version: 1, statements: v1 },
+  { version: 2, statements: v2 },
+];
 
 /** Highest migration version this build knows about. */
 export const SCHEMA_VERSION = MIGRATIONS[MIGRATIONS.length - 1].version;

@@ -1,11 +1,11 @@
 /**
- * Breathe — concrete palettes and the Yogic energy-body reference data.
+ * Breathe — base color palettes.
  *
  * Dark-first. Three base themes (neutral "Calm Orb", felt-sense thermal, Yogic) fill the
- * ColorRoles shape. The chakra ladder ships the MODERN rainbow palette WITH an honest
- * "modern color system" note, plus a CLASSICAL element-color alternative — never implying
- * the rainbow is ancient. Sources: docs/visual-design-system.md §1.1 and the verified
- * attribution corrections in docs/content-knowledge-base.md §6.2.
+ * ColorRoles shape. Per-tradition palettes now live in the DB (`visual_theme.palette_json`) and are
+ * resolved at runtime via theme/registry.ts, merged over DEFAULT_THEME — so a new pack ships its
+ * palette as data, not code. The Yogic energy-body reference data (chakras/nāḍīs) likewise moved to
+ * the seeded `energy_center`/`energy_channel` rows (content/packs/yogic.bundle.json).
  */
 import type { ColorRoles } from './tokens';
 
@@ -71,145 +71,5 @@ export const YOGIC_THEME: ColorRoles = {
   accent: '#C9A227',
 };
 
-/** ColorRoles per tradition. The active tradition drives the app theme (v1: Yogic). */
-export const TRADITION_THEME: Record<string, ColorRoles> = {
-  yogic: YOGIC_THEME,
-};
-
-/** Fallback theme for traditions that have not shipped their own palette yet. */
+/** Fallback theme — also the base every tradition palette merges over (see theme/registry.ts). */
 export const DEFAULT_THEME: ColorRoles = YOGIC_THEME;
-
-/** A chakra reference entry. Colors are belief/tradition data, not anatomy. */
-export interface ChakraDef {
-  slug: string;
-  name: string;
-  /** Sanskrit (IAST). */
-  sanskrit: string;
-  ordinal: number;
-  /** body_region code. */
-  region: string;
-  petals: number;
-  /** Seed (bīja) syllable; Sahasrara is silent / OM by lineage. */
-  bija: string;
-  element: string;
-  /** MODERN rainbow color (Theosophical/Hills synthesis, ~1977). Label as modern in UI. */
-  modernColor: string;
-  /** CLASSICAL element-derived color cue (per Woodroffe's "The Serpent Power", 1918). */
-  classicalColor: string;
-  classicalNote: string;
-}
-
-/**
- * The seven principal chakras. petals = 4·6·10·12·16·2·1000. The classical colors
- * deliberately differ from the rainbow (e.g., Manipura is red, not yellow; Vishuddha is
- * smoky/white, not blue) — this is encoded so the UI can render the popular palette and
- * still tell the truth about it.
- */
-export const CHAKRAS: ChakraDef[] = [
-  {
-    slug: 'muladhara',
-    name: 'Root',
-    sanskrit: 'Mūlādhāra',
-    ordinal: 1,
-    region: 'perineum',
-    petals: 4,
-    bija: 'LAM',
-    element: 'earth',
-    modernColor: '#D7263D',
-    classicalColor: '#B71C1C',
-    classicalNote: 'Deep red with a yellow earth-square (pṛthvī).',
-  },
-  {
-    slug: 'svadhisthana',
-    name: 'Sacral',
-    sanskrit: 'Svādhiṣṭhāna',
-    ordinal: 2,
-    region: 'lower_belly',
-    petals: 6,
-    bija: 'VAM',
-    element: 'water',
-    modernColor: '#F46036',
-    classicalColor: '#E8EEF2',
-    classicalNote: 'Vermilion petals with a white water-crescent (candra).',
-  },
-  {
-    slug: 'manipura',
-    name: 'Navel',
-    sanskrit: 'Maṇipūra',
-    ordinal: 3,
-    region: 'navel',
-    petals: 10,
-    bija: 'RAM',
-    element: 'fire',
-    modernColor: '#F4D35E',
-    classicalColor: '#C0392B',
-    classicalNote: 'Rain-cloud/dark-blue petals with an inner RED fire-triangle — classically red, not yellow.',
-  },
-  {
-    slug: 'anahata',
-    name: 'Heart',
-    sanskrit: 'Anāhata',
-    ordinal: 4,
-    region: 'heart',
-    petals: 12,
-    bija: 'YAM',
-    element: 'air',
-    modernColor: '#3DA35D',
-    classicalColor: '#C97B2E',
-    classicalNote: 'Vermilion/smoke-grey petals with a hexagram (ṣaṭkoṇa); modern systems use green.',
-  },
-  {
-    slug: 'vishuddha',
-    name: 'Throat',
-    sanskrit: 'Viśuddha',
-    ordinal: 5,
-    region: 'throat',
-    petals: 16,
-    bija: 'HAM',
-    element: 'ether',
-    modernColor: '#2E86AB',
-    classicalColor: '#EDEDED',
-    classicalNote: 'Smoky-purple petals with a white moon-disc center — classically smoky/white, not blue.',
-  },
-  {
-    slug: 'ajna',
-    name: 'Brow',
-    sanskrit: 'Ājñā',
-    ordinal: 6,
-    region: 'brow',
-    petals: 2,
-    bija: 'OM',
-    element: 'mind',
-    modernColor: '#3B3B98',
-    classicalColor: '#F2F2F2',
-    classicalNote: 'Two white petals with OM; modern systems use indigo.',
-  },
-  {
-    slug: 'sahasrara',
-    name: 'Crown',
-    sanskrit: 'Sahasrāra',
-    ordinal: 7,
-    region: 'crown',
-    petals: 1000,
-    bija: '',
-    element: 'consciousness',
-    modernColor: '#E6E6FA',
-    classicalColor: '#FFFFFF',
-    classicalNote: 'A thousand-petalled lotus, luminous white "whiter than the full moon".',
-  },
-];
-
-/** The three principal nadis (channels). */
-export interface NadiDef {
-  slug: string;
-  name: string;
-  side: 'central' | 'left' | 'right';
-  polarity: string;
-  color: string;
-}
-
-export const NADIS: NadiDef[] = [
-  { slug: 'sushumna', name: 'Suṣumnā', side: 'central', polarity: 'fire / axis', color: '#C9A227' },
-  { slug: 'ida', name: 'Iḍā', side: 'left', polarity: 'lunar / cooling', color: '#9FB8E6' },
-  { slug: 'pingala', name: 'Piṅgalā', side: 'right', polarity: 'solar / heating', color: '#E07A5F' },
-];
